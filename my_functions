@@ -1,0 +1,29 @@
+function devc() {
+     devcontainer $1 --workspace-folder . ${@: 2}
+ }
+
+
+function docker-clean(){
+	for n in $(seq 1 3)
+	do
+	    ACTIVE=$(docker ps -aq)
+	    docker stop $(docker ps -aq)
+	    docker container remove --force ${ACTIVE}
+	    docker image rm --force $(docker image list -aq)
+	done
+}
+
+
+function mdr(){
+	python -m rich.markdown $@
+}
+
+function cd() {
+  builtin cd "$@"
+
+  ## If env folder is found then activate the vitualenv
+    if [ -d .venv ] ; then
+      echo ".venv found, activate with:\033[1;32m source ./venv/bin/activate \033[0m"
+    fi
+  
+}

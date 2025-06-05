@@ -1,13 +1,3 @@
-# Copy and self modified from ys.zsh-theme, the one of default themes in master repository
-# Clean, simple, compatible and meaningful.
-# Tested on Linux, Unix and Windows under ANSI colors.
-# It is recommended to use with a dark background and the font Inconsolata.
-# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
-# http://xiaofan.at
-# 2 Jul 2015 - Xiaofan
-# vim:ft=zsh ts=2 sw=2 sts=2
-
-
 # Machine name.
 function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
@@ -37,7 +27,6 @@ function virtualenv_prompt_info {
   [[ -n ${VIRTUAL_ENV} ]] || return
   echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
 }
-
 
 local git_info='${$(git_prompt_info):+ $(git_prompt_info)}'
 local virtualenv_info='$(virtualenv_prompt_info)'

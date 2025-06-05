@@ -11,6 +11,8 @@
       # <home-manager/nixos>
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -90,8 +92,8 @@
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # install steam
   programs.steam = {
@@ -101,23 +103,18 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # use zsh
   programs.zsh.enable = true;
   programs.zsh.ohMyZsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # activate virtualization (podman)
+  # # activate virtualization (podman)
   virtualisation.containers.enable = true;
   virtualisation = {
     podman = {
       enable = true;
-
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
-
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
@@ -125,32 +122,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    curl
-    git
-    python313
-    python313Packages.pip
-    python313Packages.ipython
-    rustup
-    just
-    btop
-    cargo
-    gcc
-    podman-tui
-    dive
-    docker-compose
-    micro
-    vscodium
-    rio
-    uv
-    deja-dup
-    soundconverter
-    ffmpeg
-    zellij
-    solaar
-    home-manager
+  environment.systemPackages = with pkgs; [  
   ];
 
   # logitech

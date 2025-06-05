@@ -1,17 +1,14 @@
 export EDITOR="micro"
 export VISUAL="micro"
-export ZSH_CUSTOM="/home/seba/.custom"
+export ZSH_CUSTOM="${HOME}/.custom_zsh"
 
-echo $(pwd)
-echo $(ls)
-
-if [ -f my_aliases ]
+if [ -f ${ZSH_CUSTOM}/my_aliases ]
 then
   . my_aliases
 fi
 
 # custom functions
-if [ -f my_functions ]
+if [ -f ${ZSH_CUSTOM}/my_functions ]
 then
   . my_functions
 fi

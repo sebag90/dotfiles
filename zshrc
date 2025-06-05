@@ -1,16 +1,17 @@
 export EDITOR="micro"
 export VISUAL="micro"
-export ZSH_CUSTOM="${HOME}/.custom_zsh"
+export ZSH_CUSTOM="${HOME}/.config/zsh"
 
+# custom aliases
 if [ -f ${ZSH_CUSTOM}/my_aliases ]
 then
-  . my_aliases
+  . ${ZSH_CUSTOM}/my_aliases
 fi
 
 # custom functions
 if [ -f ${ZSH_CUSTOM}/my_functions ]
 then
-  . my_functions
+  . ${ZSH_CUSTOM}/my_functions
 fi
 
 export PATH="${PATH}:/home/seba/.cargo/bin"

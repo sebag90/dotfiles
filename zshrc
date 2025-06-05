@@ -1,9 +1,6 @@
 export EDITOR="micro"
 export VISUAL="micro"
 
-echo $ZSH_CUSTOM
-#export ZSH_CUSTOM="${HOME}/.config/zsh"
-
 # custom aliases
 if [ -f ${ZSH_CUSTOM}/my_aliases ]
 then

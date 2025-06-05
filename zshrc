@@ -2,8 +2,8 @@ export EDITOR="micro"
 export VISUAL="micro"
 export ZSH_CUSTOM="/home/seba/.custom"
 
-echo pwd
-echo ls
+echo $(pwd)
+echo $(ls)
 
 if [ -f my_aliases ]
 then

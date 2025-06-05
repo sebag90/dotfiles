@@ -1,15 +1,15 @@
 export EDITOR="micro"
 export VISUAL="micro"
 
-if [ -f $HOME/.my_aliases ]
+if [ -f my_aliases ]
 then
-  . $HOME/.my_aliases
+  . my_aliases
 fi
 
 # custom functions
-if [ -f $HOME/.my_functions ]
+if [ -f my_functions ]
 then
-  . $HOME/.my_functions
+  . my_functions
 fi
 
 export PATH="${PATH}:/home/seba/.cargo/bin"

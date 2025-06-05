@@ -5,12 +5,14 @@
   home.username = "seba";
   home.homeDirectory = "/home/seba";
 
-  # home.file.".zshrc".source = "/home/seba/dotfiles/zshrc";
-  #home.file.".my_functions".source = "./dotfiles/my_functions";
-  #home.file.".config/rio/config.toml".source = "./dotfiles/rio/config.toml";  
-  #home.file.".config/rio/themes/rose-pine.toml".source = "./dotfiles/rio/rose-pine.toml";
-  home.file.".oh-my-zsh/themes/mytheme.zsh-theme".source = dotfiles.zshtheme;
-  home.file.".oh-my-zsh/custom/themes/mytheme.zsh-theme".source = dotfiles.zshtheme;
+  # rio config
+  home.file.".config/rio/config.toml".source = dotfiles.rioconfig;  
+  home.file.".config/rio/themes/rose-pine.toml".source = dotfiles.riotheme;
+
+  # zsh config
+  home.file.".config/zsh/themes/mytheme.zsh-theme".source = dotfiles.zshtheme;
+  home.file.".config/zsh/zshrc".source = dotfiles.zshrc;
+  home.file.".config/zsh/my_functions".source = dotfiles.myfunctions;
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -70,9 +72,11 @@
     # autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     history.size = 10000;
+    initContent = ''
+      source /home/seba/.config/zsh/zshrc
+    '';
     sessionVariables = {
-      ZSH_CUSTOM = "/home/seba/.oh-my-zsh/custom";
-      EDITOR = "micro";
+      ZSH_CUSTOM = "/home/seba/.config/zsh";
     };
     oh-my-zsh = { # "ohMyZsh" without Home Manager
       enable = true;

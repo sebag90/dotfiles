@@ -3,12 +3,22 @@
     # expose the file as a derivation
     zshtheme = builtins.path {
       name = "mytheme.zsh-theme";
-      path = ./mytheme.zsh-theme;
+      path = ./zsh/mytheme.zsh-theme;
     };
 
-    myfunctions = builtins.path {
+    functions = builtins.path {
       name = "my_functions";
-      path = ./my_functions;
+      path = ./zsh/my_functions;
+    };
+
+    aliases = builtins.path {
+      name = "my_aliases";
+      path = ./zsh/my_aliases;
+    };
+
+    zshrc = builtins.path {
+      name = "zshrc";
+      path = ./zsh/zshrc;
     };
 
     rioconfig = builtins.path {
@@ -19,11 +29,6 @@
     riotheme = builtins.path {
       name = "riotheme";
       path = ./rio/rose-pine.toml;
-    };
-
-    zshrc = builtins.path {
-      name = "zshrc";
-      path = ./zshrc;
     };
   };
 }

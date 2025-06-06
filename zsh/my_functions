@@ -2,20 +2,8 @@ function devc() {
      devcontainer $1 --workspace-folder . ${@: 2}
  }
 
-
-function docker-clean(){
-	for n in $(seq 1 3)
-	do
-	    ACTIVE=$(docker ps -aq)
-	    docker stop $(docker ps -aq)
-	    docker container remove --force ${ACTIVE}
-	    docker image rm --force $(docker image list -aq)
-	done
-}
-
-
-function mdr(){
-	python -m rich.markdown $@
+function build(){
+	sudo nixos-rebuild switch --flake ~/code/dotfiles/nixos#nixos
 }
 
 function cd() {

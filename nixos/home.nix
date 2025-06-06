@@ -61,6 +61,7 @@
     devcontainer
     glow # markdown previewer in terminal
     btop  # replacement of htop/nmon
+    helix
   ];
 
   # basic configuration of git, please change to your own

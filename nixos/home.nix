@@ -12,7 +12,8 @@
   # zsh config
   home.file.".config/zsh/themes/mytheme.zsh-theme".source = dotfiles.zshtheme;
   home.file.".config/zsh/zshrc".source = dotfiles.zshrc;
-  home.file.".config/zsh/my_functions".source = dotfiles.myfunctions;
+  home.file.".config/zsh/my_functions".source = dotfiles.functions;
+  home.file.".config/zsh/my_aliases".source = dotfiles.aliases;
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -35,6 +36,8 @@
     wget
     curl
     git
+    bat
+    eza
     python313
     python313Packages.pip
     python313Packages.ipython

@@ -10,6 +10,6 @@
   imports = [
     ../config_files.nix
     ./home-packages.nix
-    ./modules
+    ../../modules
   ];
 }

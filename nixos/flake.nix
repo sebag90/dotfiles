@@ -30,6 +30,7 @@
             home-manager.users.seba = import ./hosts/nixos/home.nix;
             home-manager.extraSpecialArgs = {
               dotfiles = dotfiles;
+              hostname = "nixos";
             };
           }
         ];

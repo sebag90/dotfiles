@@ -2,11 +2,11 @@
   "nodes": {
     "dotfiles": {
       "locked": {
-        "lastModified": 1749892736,
-        "narHash": "sha256-3JcE1pGsT6NxHbV0WKzVKQnT/KxYPWpLqq2bPW2V3NI=",
+        "lastModified": 1749896548,
+        "narHash": "sha256-A8L9Bfd+eQDVBturn0NiZ5jCQZDRKP7WMg9kKwTQpdA=",
         "owner": "sebag90",
         "repo": "dotfiles",
-        "rev": "77a006a42fd63b9db9b0c274a1d5a4a96590aa2a",
+        "rev": "fa3c3b46c963545c0bb313ab868447b020acf0a3",
         "type": "github"
       },
       "original": {

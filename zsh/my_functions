@@ -3,8 +3,8 @@ function devc() {
 }
 
 function build(){
-  sudo $NIX_BUILD_EXEC switch --impure --flake ~/code/dotfiles/nix#$(hostname)
-  sudo chown $USER ~/code/dotfiles/$(hostname)/flake.lock
+  sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR/nix#$(hostname)
+  sudo chown $USER $DOTFILES_DIR/$(hostname)/flake.lock
 }
 
 function cd() {

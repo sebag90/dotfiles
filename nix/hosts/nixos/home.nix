@@ -12,4 +12,8 @@
     ./home-packages.nix
     ../../modules
   ];
+
+  home.sessionVariables = {
+    NIX_BUILD_EXEC = "nixos-rebuild";
+  };
 }

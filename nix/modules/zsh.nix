@@ -8,7 +8,7 @@
     '';
     sessionVariables = {
       ZSH_CUSTOM = "${config.home.homeDirectory}/.config/zsh";
-      NIX_BUILD_EXEC = "nixos-rebuild";
+      DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
     };
     oh-my-zsh = {
       enable = true;

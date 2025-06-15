@@ -1,5 +1,5 @@
 # NIX secret file
-inside the directory of the host, create a `nixos/hosts/nixos/secrets.nix`:
+inside the directory of the host, create a `secrets.nix` (`dotfiles/nix/hosts/nixos/secrets.nix`):
 ```
 {
   userEmail = "myemail@secrets.com";

@@ -31,6 +31,7 @@
             home-manager.extraSpecialArgs = {
               dotfiles = dotfiles;
               hostname = "nixos";
+              dotfiles_dir = ".dotfiles";
             };
           }
         ];

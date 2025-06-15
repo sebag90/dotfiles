@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, dotfiles_dir, ...}: {
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -8,7 +8,7 @@
     '';
     sessionVariables = {
       ZSH_CUSTOM = "${config.home.homeDirectory}/.config/zsh";
-      DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
+      DOTFILES_DIR = "${config.home.homeDirectory}/${dotfiles_dir}";
     };
     oh-my-zsh = {
       enable = true;

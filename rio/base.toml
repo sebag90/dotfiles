@@ -4,6 +4,3 @@ theme = "rose-pine.toml"
 [cursor]
 shape = 'beam'
 blinking = true
-
-[fonts]
-size = 18

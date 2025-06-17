@@ -20,14 +20,19 @@
       path = ./zsh/zshrc;
     };
 
-    rio_config = builtins.path {
-      name = "rio_config";
-      path = ./rio/config.toml;
+    base_rio_config = builtins.path {
+      name = "base_rio_config";
+      path = ./rio/base.toml;
     };
 
-    rio_config_mac = builtins.path {
-      name = "rio_config_mac";
-      path = ./rio/config_mac.toml;
+    rio_mac_config = builtins.path {
+      name = "rio_mac_config";
+      path = ./rio/mac.toml;
+    };
+
+    rio_nixos_config = builtins.path {
+      name = "rio_nixos_config";
+      path = ./rio/nixos.toml;
     };
 
     rio_theme = builtins.path {

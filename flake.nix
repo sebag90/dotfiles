@@ -20,8 +20,8 @@
       path = ./zsh/zshrc;
     };
 
-    base_rio_config = builtins.path {
-      name = "base_rio_config";
+    rio_base_config = builtins.path {
+      name = "rio_base_config";
       path = ./rio/base.toml;
     };
 

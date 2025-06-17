@@ -1,7 +1,7 @@
-{ dotfiles,... }:
+{ dotfiles, hostname, ... }:
 {
   # rio config
-  home.file.".config/rio/config.toml".source = dotfiles.rio_config;
+  home.file.".config/rio/config.toml".source = if hostname == "MB" then dotfiles.rio_config_mac else dotfiles.rio_config;
   home.file.".config/rio/themes/rose-pine.toml".source = dotfiles.rio_theme;
 
   # zsh config

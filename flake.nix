@@ -25,6 +25,11 @@
       path = ./rio/config.toml;
     };
 
+    rio_config_mac = builtins.path {
+      name = "rio_config_mac";
+      path = ./rio/config_mac.toml;
+    };
+
     rio_theme = builtins.path {
       name = "rio_theme";
       path = ./rio/rose-pine.toml;

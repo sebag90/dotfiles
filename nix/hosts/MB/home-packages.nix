@@ -11,6 +11,7 @@
     vscodium
     just
     uv
+    podman
     podman-tui
     btop
     glow

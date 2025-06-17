@@ -2,15 +2,15 @@ export EDITOR="hx"
 export VISUAL="hx"
 
 # custom aliases
-if [ -f ${ZSH_CUSTOM}/my_aliases ]
+if [ -f ${ZSH_CUSTOM}/aliases ]
 then
-  . ${ZSH_CUSTOM}/my_aliases
+  . ${ZSH_CUSTOM}/aliases
 fi
 
 # custom functions
-if [ -f ${ZSH_CUSTOM}/my_functions ]
+if [ -f ${ZSH_CUSTOM}/functions ]
 then
-  . ${ZSH_CUSTOM}/my_functions
+  . ${ZSH_CUSTOM}/functions
 fi
 
 export PATH="${PATH}:${HOME}/.cargo/bin"

@@ -4,7 +4,7 @@ function devc() {
 
 function build(){
   sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR/nix#$NIX_HOSTNAME
-  sudo chown $USER $DOTFILES_DIR/$NIX_HOSTNAME/flake.lock
+  sudo chown $USER $DOTFILES_DIR/nix/flake.lock
 }
 
 function cd() {

@@ -6,13 +6,13 @@
     };
 
     functions = builtins.path {
-      name = "my_functions";
-      path = ./zsh/my_functions;
+      name = "functions";
+      path = ./zsh/functions;
     };
 
     aliases = builtins.path {
-      name = "my_aliases";
-      path = ./zsh/my_aliases;
+      name = "aliases";
+      path = ./zsh/aliases;
     };
 
     zshrc = builtins.path {

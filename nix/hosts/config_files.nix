@@ -1,7 +1,18 @@
 { dotfiles, hostname, ... }:
+
+let
+  base = builtins.readFile dotfiles.rio_base_config;
+  mac  = builtins.readFile dotfiles.rio_mac_config;
+  nix  = builtins.readFile dotfiles.rio_nixos_config;
+
+  combinedRioConfig = if hostname == "MB" then
+    base + "\n" + mac
+  else
+    base + "\n" + nix;
+in
 {
   # rio config
-  home.file.".config/rio/config.toml".source = if hostname == "MB" then dotfiles.rio_config_mac else dotfiles.rio_config;
+  home.file.".config/rio/config.toml".text = combinedRioConfig;
   home.file.".config/rio/themes/rose-pine.toml".source = dotfiles.rio_theme;
 
   # zsh config

@@ -13,9 +13,7 @@
     glow
 
     # programming
-    helix
     rio
-    vscodium
     just
     uv
     zellij
@@ -24,14 +22,18 @@
     python313
     python313Packages.pip
     python313Packages.ipython
+
+    # editors
+    vscodium
+    helix
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
+    dockerfile-language-server-nodejs
 
     # containers
     podman
     podman-tui
     dive
     devcontainer
-    dockerfile-language-server-nodejs
   ];
 }

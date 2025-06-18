@@ -2,5 +2,5 @@ theme = "rose_pine"
 
 [editor.cursor-shape]
 insert = "bar"
-normal = "bar"
-select = "bar"
+normal = "block"
+select = "underline"

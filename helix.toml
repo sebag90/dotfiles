@@ -4,27 +4,3 @@ theme = "rose_pine"
 insert = "bar"
 normal = "bar"
 select = "bar"
-
-[keys.normal]
-# Map arrow keys in normal mode to move cursor
-left = "move_char_left"
-right = "move_char_right"
-up = "move_line_up"
-down = "move_line_down"
-
-[keys.select]
-# Enable arrow key selection like in typical editors
-left = "extend_char_left"
-right = "extend_char_right"
-up = "extend_line_up"
-down = "extend_line_down"
-
-# Optional: Escape to go back to normal mode from select
-esc = "normal_mode"
-
-[keys.insert]
-# Allow arrow key movement while inserting
-left = "move_char_left"
-right = "move_char_right"
-up = "move_line_up"
-down = "move_line_down"

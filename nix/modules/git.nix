@@ -2,7 +2,7 @@
 
 let
   secretsPath = "${config.home.homeDirectory}/${dotfiles_dir}/nix/hosts/${hostname}/secrets.nix";
-  secrets = if builtins.pathExists secretsPath then import secretsPath else {};
+  secrets = if builtins.pathExists secretsPath then import secretsPath else {userEmail="dummy";};
 in {
   programs.git = {
     enable = true;

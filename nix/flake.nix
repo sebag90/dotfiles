@@ -28,6 +28,7 @@
             home-manager.useGlobalPkgs = false;
             home-manager.useUserPackages = true;
             home-manager.users.seba = import ./hosts/nixos/home.nix;
+            home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
               dotfiles = dotfiles;
               hostname = "nixos";
@@ -47,6 +48,7 @@
             home-manager.useGlobalPkgs = false;
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
+            home-manager.backupFileExtension = "backup";
             home-manager.users.sebastiano = import ./hosts/MB/home.nix;
             home-manager.extraSpecialArgs = {
               dotfiles = dotfiles;

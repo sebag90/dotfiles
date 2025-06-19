@@ -17,6 +17,7 @@
     just
     uv
     zellij
+    yazi
     pre-commit
     ruff
     pipx

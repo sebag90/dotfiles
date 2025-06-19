@@ -12,5 +12,12 @@
       solaar
       home-manager
       pinta
+
+      # libreoffice
+      libreoffice-qt
+      hunspell
+      hunspellDicts.it_IT
+      hunspellDicts.en_US
+      hunspellDicts.de_DE
     ];
 }

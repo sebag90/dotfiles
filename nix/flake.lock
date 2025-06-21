@@ -2,11 +2,11 @@
   "nodes": {
     "dotfiles": {
       "locked": {
-        "lastModified": 1750284527,
-        "narHash": "sha256-obe0YtcT7Kdsv0YbXrY/yj+L97q6123lkd3eXzRvhQc=",
+        "lastModified": 1750506629,
+        "narHash": "sha256-qB+7VWkVd9vs+1prSGotklFH4c7fAM7NL6wpc6v2sI8=",
         "owner": "sebag90",
         "repo": "dotfiles",
-        "rev": "915b3afdf816c9dd18c76f19d106cfe32201f0ca",
+        "rev": "dd2946e99ac6d807d879eea5f9cf0424d4030bce",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1750133334,
-        "narHash": "sha256-urV51uWH7fVnhIvsZIELIYalMYsyr2FCalvlRTzqWRw=",
+        "lastModified": 1750400657,
+        "narHash": "sha256-3vkjFnxCOP6vm5Pm13wC/Zy6/VYgei/I/2DWgW4RFeA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "36ab78dab7da2e4e27911007033713bab534187b",
+        "rev": "b2485d56967598da068b5a6946dadda8bfcbcd37",
         "type": "github"
       },
       "original": {

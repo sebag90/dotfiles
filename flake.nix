@@ -56,5 +56,11 @@
       name = "yazi_lua";
       path = ./yazi/init.lua;
     };
+
+    # ghostty
+    ghostty_config = builtins.path {
+      name = "ghostty_config";
+      path = ./ghostty;
+    };
   };
 }

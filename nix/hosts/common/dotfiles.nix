@@ -27,4 +27,7 @@ in
   # yazi
   home.file.".config/yazi/yazi.toml".source = dotfiles.yazi_config;
   home.file.".config/yazi/init.lua".source = dotfiles.yazi_lua;
+
+  # ghostty
+  home.file.".config/ghostty/config".source = dotfiles.ghostty_config;
 }

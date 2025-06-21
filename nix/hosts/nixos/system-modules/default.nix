@@ -13,5 +13,6 @@
     ./audio.nix
     ./bootloader.nix
     ./zsh.nix
+    ./fonts.nix
   ];
 }

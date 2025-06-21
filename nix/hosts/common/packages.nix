@@ -14,6 +14,7 @@
 
     # programming
     rio
+    ghostty
     just
     uv
     zellij

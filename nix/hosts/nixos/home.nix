@@ -8,10 +8,10 @@
   };
 
   imports = [
-    ../config_files.nix
+    ../common/dotfiles.nix
+    ../common/packages.nix
+    ../common/modules
     ./home-packages.nix
-    ../common_packages.nix
-    ../../modules
   ];
 
   home.sessionVariables = {

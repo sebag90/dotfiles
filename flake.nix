@@ -1,6 +1,7 @@
 {
   outputs = { self }: {
-    zsh_theme = builtins.path {
+      # zsh
+      zsh_theme = builtins.path {
       name = "mytheme.zsh-theme";
       path = ./zsh/mytheme.zsh-theme;
     };
@@ -20,6 +21,7 @@
       path = ./zsh/zshrc;
     };
 
+    # rio
     rio_base_config = builtins.path {
       name = "rio_base_config";
       path = ./rio/base.toml;
@@ -34,14 +36,25 @@
       name = "rio_nixos_config";
       path = ./rio/nixos.toml;
     };
-
     rio_theme = builtins.path {
       name = "rio_theme";
       path = ./rio/rose-pine.toml;
     };
+
+    # helix
     helix_config = builtins.path {
       name = "helix_config";
       path = ./helix.toml;
+    };
+
+    # yazi
+    yazi_config = builtins.path {
+      name = "yazi_config";
+      path = ./yazi/config.toml;
+    };
+    yazi_lua = builtins.path {
+      name = "yazi_lua";
+      path = ./yazi/init.lua;
     };
   };
 }

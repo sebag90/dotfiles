@@ -18,6 +18,7 @@
     uv
     zellij
     yazi
+    yaziPlugins.git
     pre-commit
     ruff
     pipx

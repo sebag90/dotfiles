@@ -50,7 +50,7 @@
     # yazi
     yazi_config = builtins.path {
       name = "yazi_config";
-      path = ./yazi/config.toml;
+      path = ./yazi/yazi.toml;
     };
     yazi_lua = builtins.path {
       name = "yazi_lua";

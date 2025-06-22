@@ -15,6 +15,7 @@
     # programming
     rio
     ghostty
+    lazygit
     just
     uv
     zellij

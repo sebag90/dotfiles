@@ -14,3 +14,12 @@ function cd() {
     echo ".venv found, activate with:\033[1;32m source ./venv/bin/activate \033[0m"
   fi
 }
+
+function y() {
+  # stast a version of yazi that closes in the open dir
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+rm -f -- "$tmp"
+}

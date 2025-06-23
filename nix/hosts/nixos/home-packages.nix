@@ -12,6 +12,7 @@
       solaar
       home-manager
       pinta
+      ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # libreoffice
       libreoffice-qt

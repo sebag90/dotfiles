@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, ghostty, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -14,7 +14,6 @@
 
     # programming
     rio
-    ghostty
     lazygit
     just
     uv

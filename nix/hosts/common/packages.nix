@@ -17,6 +17,7 @@
     lazygit
     just
     uv
+    cookiecutter
     zellij
     yazi
     yaziPlugins.git

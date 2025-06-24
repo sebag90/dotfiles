@@ -4,6 +4,5 @@
     ./zsh.nix
     ./git.nix
     ./yazi.nix
-    ./fonts.nix
   ];
 }

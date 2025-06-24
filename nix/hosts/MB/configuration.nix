@@ -10,4 +10,7 @@
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
   #system.stateVersion = "25.05"; # Did you read the comment?
+  imports = [
+    ../common/system
+  ];
 }

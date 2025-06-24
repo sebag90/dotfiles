@@ -58,9 +58,18 @@
     };
 
     # ghostty
-    ghostty_config = builtins.path {
-      name = "ghostty_config";
-      path = ./ghostty;
+    ghostty_base_config = builtins.path {
+      name = "ghostty_base_config";
+      path = ./ghostty/config;
     };
-  };
+
+    ghostty_mac_config = builtins.path {
+      name = "ghostty_mac_config";
+      path = ./ghostty/mac.config;
+    };
+
+    ghostty_nixos_config = builtins.path {
+      name = "ghostty_nixos_config";
+      path = ./ghostty/nixos.config;
+    };
 }

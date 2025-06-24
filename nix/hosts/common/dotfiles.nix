@@ -1,14 +1,23 @@
 { dotfiles, hostname, ... }:
 
-let
-  base = builtins.readFile dotfiles.rio_base_config;
-  mac  = builtins.readFile dotfiles.rio_mac_config;
-  nix  = builtins.readFile dotfiles.rio_nixos_config;
+  let
+  rio_base = builtins.readFile dotfiles.rio_base_config;
+  rio_mac  = builtins.readFile dotfiles.rio_mac_config;
+  rio_nix  = builtins.readFile dotfiles.rio_nixos_config;
 
-  combinedRioConfig = if hostname == "MB" then
-    base + "\n" + mac
-  else
-    base + "\n" + nix;
+  ghostty_base = builtins.readFile dotfiles.ghostty_base_config;
+  ghostty_mac  = builtins.readFile dotfiles.ghostty_mac_config;
+  ghostty_nix  = builtins.readFile dotfiles.ghostty_nixos_config;
+
+
+  cfg =
+    if hostname == "MB" then {
+      rio_config = rio_base + "\n" + rio_mac;
+      ghostty_config = ghostty_base + "\n" + ghostty_mac
+    } else {
+      rio_config = rio_base + "\n" + rio_nix;
+      ghostty_config = ghostty_base + "\n" + ghostty_nix
+    };
 in
 {
   # rio config

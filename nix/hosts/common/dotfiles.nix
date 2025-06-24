@@ -13,15 +13,15 @@
   cfg =
     if hostname == "MB" then {
       rio_config = rio_base + "\n" + rio_mac;
-      ghostty_config = ghostty_base + "\n" + ghostty_mac
+      ghostty_config = ghostty_base + "\n" + ghostty_mac;
     } else {
       rio_config = rio_base + "\n" + rio_nix;
-      ghostty_config = ghostty_base + "\n" + ghostty_nix
+      ghostty_config = ghostty_base + "\n" + ghostty_nix;
     };
 in
 {
   # rio config
-  home.file.".config/rio/config.toml".text = combinedRioConfig;
+  home.file.".config/rio/config.toml".text = cfg.rio_config;
   home.file.".config/rio/themes/rose-pine.toml".source = dotfiles.rio_theme;
 
   # zsh config
@@ -38,5 +38,5 @@ in
   home.file.".config/yazi/init.lua".source = dotfiles.yazi_lua;
 
   # ghostty
-  home.file.".config/ghostty/config".source = dotfiles.ghostty_config;
+  home.file.".config/ghostty/config".text = cfg.ghostty_config;
 }

@@ -19,6 +19,7 @@
     uv
     cookiecutter
     zellij
+    broot
     yazi
     yaziPlugins.git
     pre-commit

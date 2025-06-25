@@ -11,6 +11,7 @@
     glow
     btop
     glow
+    meld
 
     # programming
     rio

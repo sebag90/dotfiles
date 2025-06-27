@@ -3,6 +3,6 @@
     ./eza.nix
     ./zsh.nix
     ./git.nix
-#    ./yazi.nix
+    ./yazi.nix
   ];
 }

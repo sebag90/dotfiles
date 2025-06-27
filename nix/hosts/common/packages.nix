@@ -1,4 +1,4 @@
-{ pkgs, yazi, ... }:
+{ pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -20,7 +20,7 @@
     uv
     cookiecutter
     zellij
-    yazi.packages.${pkgs.system}.default
+    # yazi.packages.${pkgs.system}.default
     # yazi
     # yaziPlugins.git
     pre-commit

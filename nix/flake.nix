@@ -13,7 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfiles.url = "github:sebag90/dotfiles";
-    yazi.url = "github:sxyazi/yazi";
   };
 
    outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
@@ -34,7 +33,6 @@
               dotfiles = inputs.dotfiles;
               hostname = "nixos";
               dotfiles_dir = ".dotfiles";
-              yazi = inputs.yazi;
             };
           }
         ];

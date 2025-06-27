@@ -13,10 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfiles.url = "github:sebag90/dotfiles";
-    ghostty.url = "github:ghostty-org/ghostty";
   };
 
-   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, dotfiles, ghostty, ... }: {
+   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, dotfiles, ... }: {
     # laptop
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -32,7 +31,6 @@
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
               dotfiles = dotfiles;
-              ghostty = ghostty;
               hostname = "nixos";
               dotfiles_dir = ".dotfiles";
             };

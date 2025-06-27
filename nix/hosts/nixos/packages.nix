@@ -1,4 +1,4 @@
-{ pkgs, ghostty, ... }:
+{ pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -12,7 +12,7 @@
       solaar
       home-manager
       pinta
-      ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ghostty
 
       # libreoffice
       libreoffice-qt

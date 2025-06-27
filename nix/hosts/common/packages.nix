@@ -21,8 +21,8 @@
     cookiecutter
     zellij
     # yazi.packages.${pkgs.system}.default
-    # yazi
-    # yaziPlugins.git
+    yazi
+    yaziPlugins.git
     pre-commit
     ruff
     pipx

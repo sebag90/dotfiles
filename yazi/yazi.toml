@@ -9,4 +9,4 @@ name = "*/"
 run  = "git"
 
 [mgr]
-show_hidden = true
+ratio = [2, 2, 6]

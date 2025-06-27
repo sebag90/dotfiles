@@ -15,7 +15,7 @@
     dotfiles.url = "github:sebag90/dotfiles";
   };
 
-   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, dotfiles, ... }: {
+   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
     # laptop
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -30,7 +30,7 @@
             home-manager.users.seba = import ./hosts/nixos/home.nix;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              dotfiles = dotfiles;
+              dotfiles = inputs.dotfiles;
               hostname = "nixos";
               dotfiles_dir = ".dotfiles";
             };
@@ -51,7 +51,7 @@
             home-manager.backupFileExtension = "backup";
             home-manager.users.sebastiano = import ./hosts/MB/home.nix;
             home-manager.extraSpecialArgs = {
-              dotfiles = dotfiles;
+              dotfiles = inputs.dotfiles;
               hostname = "MB";
               dotfiles_dir = ".dotfiles";
             };

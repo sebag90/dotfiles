@@ -23,6 +23,7 @@
         modules = [
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
+          ./hosts/nixos/allowunfree.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -1,7 +1,6 @@
 {
   imports = [
     ./steam.nix
-    ./allowunfree.nix
     ./podman.nix
     ./scanner.nix
     ./user.nix

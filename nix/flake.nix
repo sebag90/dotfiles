@@ -25,10 +25,10 @@
           ./hosts/nixos/hardware-configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = false;
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.seba = import ./hosts/nixos/home.nix;
             home-manager.backupFileExtension = "backup";
+            home-manager.users.seba = import ./hosts/nixos/home.nix;
             home-manager.extraSpecialArgs = {
               dotfiles = inputs.dotfiles;
               hostname = "nixos";
@@ -45,7 +45,7 @@
         modules = [
           ./hosts/MB/configuration.nix
           home-manager.darwinModules.home-manager {
-            home-manager.useGlobalPkgs = false;
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
             home-manager.backupFileExtension = "backup";

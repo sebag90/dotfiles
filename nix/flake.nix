@@ -23,7 +23,7 @@
         modules = [
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
-          ./hosts/nixos/allowunfree.nix
+          ./hosts/common/allowunfree.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -45,6 +45,7 @@
         system = "aarch64-darwin";
         modules = [
           ./hosts/MB/configuration.nix
+          ./hosts/common/allowunfree.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

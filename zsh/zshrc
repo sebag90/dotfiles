@@ -15,6 +15,12 @@ fi
 
 export PATH="${PATH}:${HOME}/.cargo/bin"
 export PATH="${PATH}:${HOME}/.local/bin"
+
+# redirect npm cache to a folder in the user's home
+# npm config set prefix "${HOME}/.cache/npm/global"
+# mkdir -p "${HOME}/.cache/npm/global"
+export PATH="${PATH}:${HOME}/.cache/npm/global"
+
 export PIP_REQUIRE_VIRTUALENV=true
 # export LS_COLORS="di=36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;36:cd=34;33:su=30;31:sg=30;36:tw=30;32:ow=30;33"

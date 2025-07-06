@@ -11,16 +11,15 @@
     glow
     btop
     glow
-    meld
 
     # programming
     rio
     lazygit
     just
+    meld
     uv
     cookiecutter
     zellij
-    # yazi.packages.${pkgs.system}.default
     yazi
     yaziPlugins.git
     pre-commit

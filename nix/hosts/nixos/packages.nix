@@ -12,6 +12,8 @@
       home-manager
       pinta
       ghostty
+      eartag
+      impression
 
       # libreoffice
       libreoffice-qt

@@ -7,5 +7,5 @@
 cursor-style = bar
 theme = rose-pine
 font-family = "Cascadia Code"
-window-height = 25r
-window-width = 85c
+window-height = 35
+window-width = 100

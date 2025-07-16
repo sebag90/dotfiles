@@ -61,5 +61,26 @@
         ];
       };
     };
+
+    # generic
+    homeConfigurations = {
+      generic = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux"; # Change to aarch64-linux if needed
+        };
+
+        extraSpecialArgs = {
+          dotfiles = inputs.dotfiles;
+          hostname = "generic";
+          dotfiles_dir = ".dotfiles";
+        };
+
+        modules = [
+          ./hosts/common/allowunfree.nix
+          ./hosts/generic/home.nix
+          ./hosts/common/packages.nix
+        ];
+      };
+    };
   };
 }

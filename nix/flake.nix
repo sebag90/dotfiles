@@ -78,7 +78,6 @@
         modules = [
           ./hosts/common/allowunfree.nix
           ./hosts/generic/home.nix
-          ./hosts/common/packages.nix
         ];
       };
     };

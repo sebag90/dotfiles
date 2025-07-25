@@ -1,7 +1,7 @@
 {
   imports = [
     ./steam.nix
-    ./podman.nix
+    ./docker.nix
     ./scanner.nix
     ./user.nix
     ./printer.nix

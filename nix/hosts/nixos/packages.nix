@@ -2,7 +2,10 @@
 {
   home.packages = with pkgs; [
       firefox
+      # rust
       cargo
+      rustfmt
+
       gcc
       docker-compose
       deja-dup

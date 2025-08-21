@@ -9,6 +9,7 @@
     # programming
     rio
     meld
+    nodejs
 
     # editors
     vscodium
@@ -18,5 +19,8 @@
     # podman-tui
     dive
     devcontainer
+
+    # others
+    shortwave
   ];
 }

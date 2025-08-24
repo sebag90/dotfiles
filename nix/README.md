@@ -5,6 +5,12 @@ Add the following line to `/etc/nix/nix.conf`
 ```
 experimental-features = nix-command flakes
 ```
+
+## Generic install
+
+`nix run .#homeConfigurations.generic.activationPackage`
+
+
 ## NIX secret file
 inside the directory of the host, create a `secrets.nix` (`dotfiles/nix/hosts/nixos/secrets.nix`):
 ```

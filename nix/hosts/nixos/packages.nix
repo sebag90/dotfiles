@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
       firefox
+      shortwave
       # rust
       cargo
       rustfmt

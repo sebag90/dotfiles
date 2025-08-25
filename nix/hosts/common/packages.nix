@@ -19,8 +19,5 @@
     # podman-tui
     dive
     devcontainer
-
-    # others
-    shortwave
   ];
 }

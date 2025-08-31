@@ -9,6 +9,7 @@
     git
     bat
     eza
+    unzip
 
     # programming
     lazygit

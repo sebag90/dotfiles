@@ -6,7 +6,7 @@
     # utils
     glow
     btop
-    imagemick
+    imagemagick
 
     # programming
     meld

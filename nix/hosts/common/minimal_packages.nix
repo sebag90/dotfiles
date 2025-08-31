@@ -1,3 +1,4 @@
+# minimal packages, installed in all system including generic
 { pkgs, ... }:
 {
   # nixpkgs.config.allowUnfree = true;

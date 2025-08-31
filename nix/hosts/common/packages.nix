@@ -1,3 +1,4 @@
+# common packages installed in all systems (except for generic)
 { pkgs, ... }:
 {
   # nixpkgs.config.allowUnfree = true;
@@ -5,9 +6,9 @@
     # utils
     glow
     btop
+    imagemick
 
     # programming
-    rio
     meld
     nodejs
 

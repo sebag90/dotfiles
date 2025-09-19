@@ -11,6 +11,7 @@
     # programming
     meld
     nodejs
+    go
 
     # editors
     vscodium

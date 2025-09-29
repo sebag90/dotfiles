@@ -31,5 +31,6 @@
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
     dockerfile-language-server-nodejs
+    gopls
   ];
 }

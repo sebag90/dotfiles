@@ -13,8 +13,12 @@ then
   . ${ZSH_CUSTOM}/functions
 fi
 
+# rust
 export PATH="${PATH}:${HOME}/.cargo/bin"
 export PATH="${PATH}:${HOME}/.local/bin"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
 
 # redirect npm cache to a folder in the user's home
 # npm config set prefix "${HOME}/.cache/npm/global"

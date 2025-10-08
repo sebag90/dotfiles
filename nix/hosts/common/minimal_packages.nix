@@ -25,6 +25,7 @@
     python313
     python313Packages.pip
     python313Packages.ipython
+    lazydocker
 
     # editors
     helix

@@ -21,6 +21,5 @@
     # podman-tui
     dive
     devcontainer
-    lazydocker
   ];
 }

@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfiles.url = "github:sebag90/dotfiles";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
    outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
@@ -32,6 +33,7 @@
             home-manager.users.seba = import ./hosts/nixos/home.nix;
             home-manager.extraSpecialArgs = {
               dotfiles = inputs.dotfiles;
+              ghostty = inputs.ghostty;
               hostname = "nixos";
               dotfiles_dir = ".dotfiles";
             };

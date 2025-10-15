@@ -72,5 +72,10 @@
       name = "ghostty_nixos_config";
       path = ./ghostty/nixos.config;
     };
+
+    ghostty_theme = builtins.path {
+      name = "ghostty_theme";
+      path = ./ghostty/rose-pine
+    };
   };
 }

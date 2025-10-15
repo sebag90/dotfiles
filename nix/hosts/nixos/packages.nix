@@ -15,7 +15,6 @@
       solaar
       home-manager
       pinta
-      ghostty
       eartag
       impression
 

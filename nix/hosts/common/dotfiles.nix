@@ -39,5 +39,5 @@ in
 
   # ghostty
   home.file.".config/ghostty/config".text = cfg.ghostty_config;
-  home.gile.".config/ghostty/theme/rose-pine".text = cfg.ghostty_theme
+  home.file.".config/ghostty/theme/rose-pine".source = dotfiles.ghostty_theme;
 }

@@ -75,7 +75,7 @@
 
     ghostty_theme = builtins.path {
       name = "ghostty_theme";
-      path = ./ghostty/rose-pine
+      path = ./ghostty/rose-pine;
     };
   };
 }

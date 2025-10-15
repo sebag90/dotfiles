@@ -11,6 +11,10 @@ function build(){
   fi
 }
 
+function clean() {
+  nix-collect-garbage -d
+}
+
 
 function cd() {
   builtin cd "$@"

@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, ghostty, ... }:
 {
   home.packages = with pkgs; [
       firefox
       shortwave
+      ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+
       # rust
       cargo
       rustfmt

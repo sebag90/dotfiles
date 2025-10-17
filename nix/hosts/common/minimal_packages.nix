@@ -1,5 +1,5 @@
 # minimal packages, installed in all system including generic
-{ pkgs, ... }:
+{ pkgs, helix, ... }:
 {
   # nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -28,7 +28,7 @@
     lazydocker
 
     # editors
-    helix
+    helix.packages.${pkgs.stdenv.hostPlatform.system}.default
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
     dockerfile-language-server-nodejs

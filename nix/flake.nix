@@ -14,6 +14,7 @@
     };
     dotfiles.url = "github:sebag90/dotfiles";
     ghostty.url = "github:ghostty-org/ghostty";
+    helix.url = "github:helix-editor/helix";
   };
 
    outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
@@ -34,6 +35,7 @@
             home-manager.extraSpecialArgs = {
               dotfiles = inputs.dotfiles;
               ghostty = inputs.ghostty;
+              helix = inputs.helix;
               hostname = "nixos";
               dotfiles_dir = ".dotfiles";
             };
@@ -57,6 +59,7 @@
             home-manager.extraSpecialArgs = {
               dotfiles = inputs.dotfiles;
               hostname = "MB";
+              helix = inputs.helix;
               dotfiles_dir = ".dotfiles";
             };
           }
@@ -74,6 +77,7 @@
         extraSpecialArgs = {
           dotfiles = inputs.dotfiles;
           hostname = "generic";
+          helix = inputs.helix;
           dotfiles_dir = ".dotfiles";
         };
 

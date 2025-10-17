@@ -5,5 +5,17 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
-# [editor]
-# rainbow-brackets = true
+[editor]
+rainbow-brackets = true
+end-of-line-diagnostics = "hint"
+color-modes = true
+true-color = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+
+[editor.indent-guides]
+render = true
+character = "╎"
+skip-levels = 0

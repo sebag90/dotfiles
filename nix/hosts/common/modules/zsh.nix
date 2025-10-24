@@ -15,5 +15,9 @@
       enable = true;
       theme = "mytheme";
     };
+
+    shellAliases = if hostname == "MB" then {
+      clipboard = "pbcopy";
+    } else {};
   };
 }

@@ -40,4 +40,8 @@ in
   # ghostty
   home.file.".config/ghostty/config".text = cfg.ghostty_config;
   home.file.".config/ghostty/themes/rose-pine".source = dotfiles.ghostty_theme;
+
+  # zellij
+  home.file.".config/zellij/config.kdl".source = dotfiles.zellij_config;
+  home.file.".config/zellij/themes/rose-pine.kdl".source = dotfiles.zellij_theme;
 }

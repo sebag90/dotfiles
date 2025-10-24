@@ -77,5 +77,15 @@
       name = "ghostty_theme";
       path = ./ghostty/rose-pine;
     };
-  };
+
+    # zellij
+    zellij_config = builtins.path {
+      name = "zellij_config";
+      path = ./zellij/config.kdl;
+    };
+
+    zellij_theme = builtins.path {
+      name = "zellij_theme";
+      path = ./zellij/rose-pine.kdl;
+    };  };
 }

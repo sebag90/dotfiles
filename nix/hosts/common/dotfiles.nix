@@ -11,7 +11,7 @@
 
 
   cfg =
-    if hostname == "MB" then {
+    if hostname == "mac" then {
       rio_config = rio_base + "\n" + rio_mac;
       ghostty_config = ghostty_base + "\n" + ghostty_mac;
     } else {

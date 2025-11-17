@@ -45,20 +45,20 @@
     };
     # mac
     darwinConfigurations = {
-      MB = nix-darwin.lib.darwinSystem {
+      mac = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./hosts/MB/configuration.nix
+          ./hosts/mac/configuration.nix
           ./hosts/common/allowunfree.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.users.sebastiano = import ./hosts/MB/home.nix;
+            home-manager.users.sebastiano = import ./hosts/mac/home.nix;
             home-manager.extraSpecialArgs = {
               dotfiles = inputs.dotfiles;
-              hostname = "MB";
+              hostname = "mac";
               helix = inputs.helix;
               dotfiles_dir = ".dotfiles";
             };

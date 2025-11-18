@@ -16,7 +16,7 @@
       theme = "mytheme";
     };
 
-    shellAliases = if hostname == "MB" then {
+    shellAliases = if hostname == "mac" then {
       clipboard = "pbcopy";
     } else {};
   };

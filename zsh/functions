@@ -4,6 +4,10 @@ function devc() {
 
 
 function build(){
+  if ["$NIX_HOSTNAME" = "mac"]; then
+    ulimit -n 4096
+  fi
+
   if [ "$NIX_HOSTNAME" = "generic" ]; then
     nix run $DOTFILES_DIR/nix#homeConfigurations.generic.activationPackage
   else

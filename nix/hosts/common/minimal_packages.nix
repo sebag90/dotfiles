@@ -29,7 +29,6 @@
     lazydocker
 
     # editors
-    flow-control
     helix.packages.${pkgs.stdenv.hostPlatform.system}.default
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server

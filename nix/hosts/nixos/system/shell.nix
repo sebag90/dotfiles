@@ -3,4 +3,7 @@
   programs.zsh.enable = true;
   programs.zsh.ohMyZsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  # fish
+  programs.fish.enable = true;
 }

@@ -11,6 +11,6 @@
     ./locals.nix
     ./audio.nix
     ./bootloader.nix
-    ./zsh.nix
+    ./shell.nix
   ];
 }

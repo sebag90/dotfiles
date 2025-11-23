@@ -22,18 +22,28 @@ function virtualenv_prompt_info
 end
 
 function git_info
-    set branch (git rev-parse --abbrev-ref HEAD ^/dev/null 2>/dev/null)
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1
     or return
 
-    if not git diff --quiet --ignore-submodules --cached; or not git diff --quiet --ignore-submodules
-        set state " ✗"
-        set color_state (set_color red)
-    else
-        set state " ✔︎"
-        set color_state (set_color green)
+    set branch (command git symbolic-ref --short HEAD 2>/dev/null)
+    if test -z "$branch"
+        set branch (command git rev-parse --short HEAD 2>/dev/null)
     end
 
-    echo -n " "(set_color white)"on "(set_color cyan)"git:"(set_color magenta)"$branch"$color_state"$state"(set_color normal)
+    command git diff --quiet --ignore-submodules --cached
+    set staged_dirty $status
+
+    command git diff --quiet --ignore-submodules
+    set unstaged_dirty $status
+
+    set set_dirty ""
+    if test $staged_dirty -ne 0 -o $unstaged_dirty -ne 0
+        set set_dirty (set_color red)" ✗"(set_color normal)
+    else
+        set set_dirty (set_color green)" ✔︎"(set_color normal)
+    end
+
+    echo -n " "(set_color magenta)" $branch$set_dirty"(set_color normal)
 end
 
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1

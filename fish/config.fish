@@ -4,7 +4,7 @@ end
 
 set -x EDITOR hx
 set -x VISUAL hx
-set -x PIP_REQUIRE_VIRTUALENV=true
+set -x PIP_REQUIRE_VIRTUALENV true
 
 alias ls="eza"
 alias cat="bat"

@@ -20,4 +20,7 @@
       clipboard = "pbcopy";
     } else {};
   };
+
+  # fish
+  programs.fish.enable = true;
 }

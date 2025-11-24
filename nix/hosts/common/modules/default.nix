@@ -1,7 +1,7 @@
 {
   imports = [
     ./eza.nix
-    ./zsh.nix
+    ./shell.nix
     ./git.nix
     ./yazi.nix
   ];

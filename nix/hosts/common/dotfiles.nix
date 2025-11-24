@@ -44,4 +44,15 @@ in
   # zellij
   home.file.".config/zellij/config.kdl".source = dotfiles.zellij_config;
   home.file.".config/zellij/themes/rose-pine.kdl".source = dotfiles.zellij_theme;
+
+  # fish
+  home.file.".config/fish/config.fish".source = dotfiles.fish_config;
+  home.file.".config/fish/themes" = {
+    source = dotfiles.fish_themes;
+    recursive = true;
+  };
+  home.file.".config/fish/functions" = {
+    source = dotfiles.fish_functions;
+    recursive = true;
+  };
 }

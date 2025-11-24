@@ -1,17 +1,17 @@
 {
   outputs = { self }: {
-      # zsh
+    # zsh
       zsh_theme = builtins.path {
       name = "mytheme.zsh-theme";
       path = ./zsh/mytheme.zsh-theme;
     };
 
-    functions = builtins.path {
+    zsh_functions = builtins.path {
       name = "functions";
       path = ./zsh/functions;
     };
 
-    aliases = builtins.path {
+    zsh_aliases = builtins.path {
       name = "aliases";
       path = ./zsh/aliases;
     };
@@ -87,5 +87,22 @@
     zellij_theme = builtins.path {
       name = "zellij_theme";
       path = ./zellij/rose-pine.kdl;
-    };  };
+    };
+
+    # fish
+    fish_config = builtins.path {
+      name = "fish_config";
+      path = ./fish/config.fish;
+    };
+
+    fish_theme = builtins.path {
+      name = "fish_themes";
+      path = ./fish/themes;
+    };
+
+    fish_functions = builtins.path {
+      name = "fish_functions";
+      path = ./fish/functions;
+    };
+  };
 }

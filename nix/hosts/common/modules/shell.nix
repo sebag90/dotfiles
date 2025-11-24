@@ -24,9 +24,5 @@
   # fish
   programs.fish = {
     enable = true;
-    # prevent HM from generating config.fish
-    shellInit = "";
-    interactiveShellInit = "";
-    loginShellInit = "";
   };
 }

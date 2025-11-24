@@ -90,9 +90,9 @@
     };
 
     # fish
-    fish_config = builtins.path {
-      name = "fish_config";
-      path = ./fish/config.fish;
+    fish_configs = builtins.path {
+      name = "fish_configs";
+      path = ./fish/configs;
     };
 
     fish_themes = builtins.path {

@@ -95,7 +95,7 @@
       path = ./fish/config.fish;
     };
 
-    fish_theme = builtins.path {
+    fish_themes = builtins.path {
       name = "fish_themes";
       path = ./fish/themes;
     };

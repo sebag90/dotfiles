@@ -24,5 +24,9 @@
   # fish
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set -gx DOTFILES_DIR "${config.home.homeDirectory}/${dotfiles_dir}"
+      set -gx NIX_HOSTNAME "${hostname}"
+    '';
   };
 }

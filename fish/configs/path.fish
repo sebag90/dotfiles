@@ -9,7 +9,7 @@ set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 
 # nix
-# set -gx PATH /run/wrappers/bin $PATH
+set -gx PATH /run/wrappers/bin $PATH
 set -U fish_user_paths $fish_user_paths /etc/profiles/per-user/sebastiano/bin
 set -U fish_user_paths $fish_user_paths /run/current-system/sw/bin
 set -U fish_user_paths $fish_user_paths /nix/var/nix/profiles/default/bin

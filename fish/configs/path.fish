@@ -1,15 +1,15 @@
 # go
-set -U fish_user_paths $HOME/go/bin $fish_user_paths
+fish_add_path $HOME/go/bin
 
 # npm
-set -U fish_user_paths $HOME/.cache/npm/global/bin $fish_user_paths
+fish_add_path $HOME/.cache/npm/global/bin
 
 # rust
-set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $fish_user_paths
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
 
 # nix
-set -gx PATH /run/wrappers/bin $PATH
-set -U fish_user_paths $fish_user_paths /etc/profiles/per-user/sebastiano/bin
-set -U fish_user_paths $fish_user_paths /run/current-system/sw/bin
-set -U fish_user_paths $fish_user_paths /nix/var/nix/profiles/default/bin
+fish_add_path /run/wrappers/bin
+fish_add_path /etc/profiles/per-user/sebastiano/bin
+fish_add_path /run/current-system/sw/bin
+fish_add_path /nix/var/nix/profiles/default/bin

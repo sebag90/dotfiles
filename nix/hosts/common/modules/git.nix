@@ -6,9 +6,9 @@ let
 in {
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       push.autoSetupRemote = "true";
+      user.email = secrets.userEmail;
     };
-    userEmail = secrets.userEmail;
   };
 }

@@ -8,6 +8,10 @@
     goosebutils.packages.${pkgs.system}.dstroy
     goosebutils.packages.${pkgs.system}.devenver
 
+    # clipboard
+    wl-clipboard
+    xclip
+
     # utils
     glow
     btop

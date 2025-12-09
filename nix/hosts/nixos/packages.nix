@@ -9,6 +9,10 @@
     cargo
     rustfmt
 
+    # clipboard
+    wl-clipboard
+    # xclip
+
     gcc
     docker-compose
     deja-dup

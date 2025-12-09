@@ -1,8 +1,17 @@
 # minimal packages, installed in all system including generic
-{ pkgs, helix, ... }:
+{ pkgs, helix, goosebutils, ... }:
 {
   # nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    # goosebutils binaries
+    goosebutils.packages.${pkgs.system}.search
+    goosebutils.packages.${pkgs.system}.dstroy
+    goosebutils.packages.${pkgs.system}.devenver
+
+    # clipboard
+    wl-clipboard
+    xclip
+
     # utils
     wget
     curl

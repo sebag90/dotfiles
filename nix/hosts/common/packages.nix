@@ -19,8 +19,8 @@
     flow-control
 
     # containers
-    # podman
-    # podman-tui
+    podman
+    podman-tui
     dive
     devcontainer
   ];

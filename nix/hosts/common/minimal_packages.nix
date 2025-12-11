@@ -18,6 +18,7 @@
     serpl
 
     # programming
+    devpod
     lazygit
     just
     uv

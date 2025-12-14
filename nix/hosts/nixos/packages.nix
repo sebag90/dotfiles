@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     firefox
-    shortwave
+    thunderbird
     ghostty  #.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # rust

@@ -37,3 +37,14 @@ sessionVariables = {
 ## ZSH
 * add zsh to the shells: `command -v zsh | sudo tee -a /etc/shells`
 * set zsh as default shell: `chsh -s $(which zsh)`
+
+## Podman
+On non nixos machines:
+* Checked the status of podman-restart.service: `$ systemctl status podman-restart.service`
+* Enable service: `$ systemctl enable podman-restart.service`
+
+On nixos:
+```
+systemctl --user enable podman-restart.service
+loginctl enable-linger $USER
+```

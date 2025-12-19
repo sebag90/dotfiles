@@ -42,6 +42,8 @@ sessionVariables = {
 On non nixos machines:
 * Checked the status of podman-restart.service: `$ systemctl status podman-restart.service`
 * Enable service: `$ systemctl enable podman-restart.service`
+* Enable for rootless: `$ systemctl --user enable podman-restart.service`
+* Enable lingering `$ sudo loginctl enable-linger $USER`
 
 On nixos:
 ```

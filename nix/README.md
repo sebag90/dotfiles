@@ -34,9 +34,9 @@ sessionVariables = {
 * https://extensions.gnome.org/extension/2639/hide-minimized/
 * https://github.com/ubuntu/gnome-shell-extension-appindicator
 
-## ZSH
-* add zsh to the shells: `command -v zsh | sudo tee -a /etc/shells`
-* set zsh as default shell: `chsh -s $(which zsh)`
+## FISH
+* add fish to the shells: `command -v fish | sudo tee -a /etc/shells`
+* set zsh as default shell: `chsh -s $(which fish)`
 
 ## Podman
 On non nixos machines:

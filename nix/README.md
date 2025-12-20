@@ -7,8 +7,8 @@ experimental-features = nix-command flakes
 ```
 
 ## Generic install
-
-`nix run .#homeConfigurations.generic.activationPackage`
+* cd into `cd dotfiles/nix/`
+* run `$ nix run .#homeConfigurations.generic.activationPackage`
 
 
 ## NIX secret file

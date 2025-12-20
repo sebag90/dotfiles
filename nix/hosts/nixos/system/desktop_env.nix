@@ -12,6 +12,8 @@
   #   gedit       # text editor
   #   yelp        # help viewer
   # ];
+
+  # COSMIC
   services.displayManager.cosmic-greeter.enable = true;
 
   # Enable the COSMIC desktop environment

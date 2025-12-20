@@ -18,7 +18,6 @@
     deja-dup
     soundconverter
     ffmpeg
-    solaar
     home-manager
     pinta
     eartag

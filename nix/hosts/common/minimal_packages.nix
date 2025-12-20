@@ -16,6 +16,7 @@
     eza
     unzip
     serpl
+    usbutils
 
     # programming
     devpod

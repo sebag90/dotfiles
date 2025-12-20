@@ -50,3 +50,10 @@ On nixos:
 systemctl --user enable podman-restart.service
 loginctl enable-linger $USER
 ```
+
+## Solaar (Logitech)
+* create plugdev group: `$ sudo groupadd plugdev`
+* add current user: `$ sudo gpasswd -a seba plugdev`
+* reload rules: `$ sudo udevadm control --reload-rules && sudo udevadm trigger`
+
+Solaar should now work for non sudo user

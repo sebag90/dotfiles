@@ -2,7 +2,7 @@
 {
   services.xserver.xkb = {
     layout = "de";
-    variant = "nodeadkeys"; # This makes ^ and ` type immediately
+    variant = ""; # This makes ^ and ` type immediately
   };
 
   i18n.inputMethod = {

@@ -17,6 +17,8 @@
     unzip
     serpl
     usbutils
+    btop
+    ctop
 
     # programming
     devpod

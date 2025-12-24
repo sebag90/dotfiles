@@ -30,9 +30,13 @@ sessionVariables = {
 
 # Post Install
 
-## Gnome Extensions:
+## Gnome
+### Extensions:
 * https://extensions.gnome.org/extension/2639/hide-minimized/
 * https://github.com/ubuntu/gnome-shell-extension-appindicator
+
+### Settings
+* additional fractal scaling: `$ gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"`
 
 ## FISH
 * add fish to the shells: `command -v fish | sudo tee -a /etc/shells`

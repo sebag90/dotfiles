@@ -2,17 +2,17 @@
 {
   services.xserver.xkb = {
     layout = "de";
-    variant = ""; # This makes ^ and ` type immediately
+    variant = "";
   };
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-    ];
-  };
+  # i18n.inputMethod = {
+  #   enable = true;
+  #   type = "fcitx5";
+  #   fcitx5.waylandFrontend = true;
+  #   fcitx5.addons = with pkgs; [
+  #     fcitx5-gtk
+  #   ];
+  # };
 
   # Configure console keymap
   console.keyMap = "de";

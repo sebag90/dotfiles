@@ -19,6 +19,7 @@
     usbutils
     btop
     ctop
+    ouch
 
     # programming
     devpod

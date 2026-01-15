@@ -15,8 +15,7 @@
 
     # editors
     vscodium
-    zed-editor
-    flow-control
+    # flow-control
 
     # containers
     podman

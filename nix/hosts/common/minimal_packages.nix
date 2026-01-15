@@ -22,22 +22,24 @@
     lazygit
     just
     uv
+    pyrefly
     cookiecutter
     zellij
     yazi
     yaziPlugins.git
     pre-commit
     ruff
-    pipx
-    python313
-    python313Packages.pip
-    python313Packages.ipython
+    # pipx
+    # python313
+    # python313Packages.pip
+    # python313Packages.ipython
     lazydocker
 
     # editors
+    # helix
     helix.packages.${pkgs.stdenv.hostPlatform.system}.default
-    python313Packages.python-lsp-server
-    python313Packages.jedi-language-server
+    # python313Packages.python-lsp-server
+    # python313Packages.jedi-language-server
     dockerfile-language-server
     gopls
   ];

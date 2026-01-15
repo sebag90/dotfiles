@@ -20,6 +20,7 @@
     # containers
     podman
     podman-tui
+    podlet
     dive
     devcontainer
   ];

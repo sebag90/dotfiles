@@ -16,6 +16,10 @@
     eza
     unzip
     serpl
+    usbutils
+    btop
+    ctop
+    ouch
 
     # programming
     devpod

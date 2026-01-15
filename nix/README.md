@@ -7,8 +7,8 @@ experimental-features = nix-command flakes
 ```
 
 ## Generic install
-
-`nix run .#homeConfigurations.generic.activationPackage`
+* cd into `cd dotfiles/nix/`
+* run `$ nix run .#homeConfigurations.generic.activationPackage`
 
 
 ## NIX secret file
@@ -30,21 +30,34 @@ sessionVariables = {
 
 # Post Install
 
-## Gnome Extensions:
+## Gnome
+### Extensions:
 * https://extensions.gnome.org/extension/2639/hide-minimized/
 * https://github.com/ubuntu/gnome-shell-extension-appindicator
 
-## ZSH
-* add zsh to the shells: `command -v zsh | sudo tee -a /etc/shells`
-* set zsh as default shell: `chsh -s $(which zsh)`
+### Settings
+* additional fractal scaling: `$ gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"`
+
+## FISH
+* add fish to the shells: `command -v fish | sudo tee -a /etc/shells`
+* set zsh as default shell: `chsh -s $(which fish)`
 
 ## Podman
 On non nixos machines:
 * Checked the status of podman-restart.service: `$ systemctl status podman-restart.service`
 * Enable service: `$ systemctl enable podman-restart.service`
+* Enable for rootless: `$ systemctl --user enable podman-restart.service`
+* Enable lingering `$ sudo loginctl enable-linger $USER`
 
 On nixos:
 ```
 systemctl --user enable podman-restart.service
 loginctl enable-linger $USER
 ```
+
+## Solaar (Logitech)
+* create plugdev group: `$ sudo groupadd plugdev`
+* add current user: `$ sudo gpasswd -a seba plugdev`
+* reload rules: `$ sudo udevadm control --reload-rules && sudo udevadm trigger`
+
+Solaar should now work for non sudo user

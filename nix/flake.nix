@@ -16,9 +16,15 @@
     ghostty.url = "github:ghostty-org/ghostty";
     helix.url = "github:helix-editor/helix";
     goosebutils.url = "github:sebag90/goosebutils";
+    solaar = {
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
+      #url = "https://flakehub.com/f/Svenum/Solaar-Flake/0.1.6.tar.gz"; # uncomment line for solaar version 1.1.18
+      #url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }: {
+   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, solaar, ... }: {
     # laptop
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -27,6 +33,7 @@
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
           ./hosts/common/allowunfree.nix
+          solaar.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -17,5 +17,13 @@ cursor-line = "warning"
 
 [editor.indent-guides]
 render = true
-character = "╎"
+character = "." #"╎"
 skip-levels = 0
+
+[keys.normal]
+A-S-k = [ "extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before" ]
+A-S-j = [ "extend_to_line_bounds", "delete_selection", "move_line_down", "paste_before" ]
+
+[keys.select]
+A-S-k = [ "extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before" ]
+A-S-j = [ "extend_to_line_bounds", "delete_selection", "move_line_down", "paste_before" ]

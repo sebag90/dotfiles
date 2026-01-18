@@ -11,8 +11,7 @@
 
     # clipboard
     wl-clipboard
-    # xclip
-
+    rclone
     gcc
     docker-compose
     deja-dup
@@ -24,10 +23,10 @@
     impression
 
     # libreoffice
-    libreoffice-qt
-    hunspell
-    hunspellDicts.it_IT
-    hunspellDicts.en_US
-    hunspellDicts.de_DE
+    # libreoffice-qt
+    # hunspell
+    # hunspellDicts.it_IT
+    # hunspellDicts.en_US
+    # hunspellDicts.de_DE
   ];
 }

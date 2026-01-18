@@ -7,6 +7,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  # # Optional: force NixOS to ignore the DNS provided by your router's DHCP
+  # networking.networkmanager.dns = "none";
+
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;

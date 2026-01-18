@@ -46,7 +46,7 @@
               helix = inputs.helix;
               goosebutils = inputs.goosebutils;
               hostname = "nixos";
-              dotfiles_dir = ".dotfiles";
+              dotfiles_dir = ".config/dotfiles";
             };
           }
         ];
@@ -70,7 +70,7 @@
               hostname = "mac";
               helix = inputs.helix;
               goosebutils = inputs.goosebutils;
-              dotfiles_dir = ".dotfiles";
+              dotfiles_dir = ".config/dotfiles";
             };
           }
         ];
@@ -89,7 +89,7 @@
           hostname = "generic";
           helix = inputs.helix;
           goosebutils = inputs.goosebutils;
-          dotfiles_dir = ".dotfiles";
+          dotfiles_dir = ".config/dotfiles";
         };
 
         modules = [

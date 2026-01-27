@@ -20,6 +20,7 @@
     btop
     ctop
     ouch
+    gdu
 
     # programming
     devpod
@@ -36,7 +37,7 @@
     # pipx
     # python313
     # python313Packages.pip
-    # python313Packages.ipython
+    python313Packages.ipython
     lazydocker
 
     # editors

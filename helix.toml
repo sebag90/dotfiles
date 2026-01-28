@@ -10,6 +10,7 @@ rulers = [120]
 cursorline = true
 gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
 bufferline = "multiple"
+auto-pairs = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -24,16 +25,15 @@ hidden = false
 
 [editor.soft-wrap]
 enable = true
-wrap-indicator = "↪ "
+# wrap-indicator = "↪ "
 
 [editor.indent-guides]
 render = true
 
 [editor.statusline]
-left = ["version-control", "spacer", "separator", "file-name", "file-modification-indicator"]
-center = []
-right = ["diagnostics", "position", "file-line-ending"]
-
+left = ["mode", "spacer", "file-name", "file-modification-indicator"]
+center = ["version-control"]
+right = ["diagnostics", "position", "separator", "total-line-numbers", "spacer", "file-encoding"]
 
 # Shortcurts
 # move block up/down

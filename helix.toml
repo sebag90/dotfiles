@@ -15,9 +15,14 @@ true-color = true
 cursor-line = "warning"
 
 
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↪ "
+
+
 [editor.indent-guides]
 render = true
-character = "." #"╎"
+character = "."
 skip-levels = 0
 
 [keys.normal]

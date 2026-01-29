@@ -47,7 +47,7 @@ in
   home.file.".config/helix" = {
     source = dotfiles.helix_config;
     recursive = true;
-  }
+  };
 
   # fish
   home.file.".config/fish/conf.d" = {

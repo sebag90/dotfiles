@@ -27,6 +27,7 @@
     lazygit
     just
     uv
+    ty
     pyrefly
     cookiecutter
     zellij

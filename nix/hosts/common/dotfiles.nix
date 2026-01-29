@@ -49,7 +49,7 @@ in
   # helix
   home.file.".config/helix" = {
     source = dotfiles.helix_config;
-    recursive = true
+    recursive = true;
   }
 
   # fish

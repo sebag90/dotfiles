@@ -45,6 +45,13 @@ in
   home.file.".config/zellij/config.kdl".source = dotfiles.zellij_config;
   home.file.".config/zellij/themes/rose-pine.kdl".source = dotfiles.zellij_theme;
 
+
+  # helix
+  home.file.".config/helix" = {
+    source = dotfiles.helix_config;
+    recursive = true
+  }
+
   # fish
   home.file.".config/fish/conf.d" = {
     source = dotfiles.fish_configs;

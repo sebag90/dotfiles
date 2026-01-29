@@ -1,0 +1,22 @@
+[[language]]
+name = "python"
+language-servers = [ "ty", "ruff", "pyrefly" ]
+auto-format = true
+
+[language-server.pyrefly]
+command = "pyrefly"
+args = [ "lsp" ]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+[language-server.ty.config]
+inlayHints.callArgumentNames = false
+experimental.rename = true
+experimental.autoImport = true

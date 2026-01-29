@@ -44,7 +44,7 @@
     # helix
     helix_config = builtins.path {
       name = "helix_config";
-      path = ./helix.toml;
+      path = ./helix/;
     };
 
     # yazi

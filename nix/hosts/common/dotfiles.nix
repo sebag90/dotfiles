@@ -30,9 +30,6 @@ in
   home.file.".config/zsh/functions".source = dotfiles.zsh_functions;
   home.file.".config/zsh/aliases".source = dotfiles.zsh_aliases;
 
-  # helix
-  home.file.".config/helix/config.toml".source = dotfiles.helix_config;
-
   # yazi
   home.file.".config/yazi/yazi.toml".source = dotfiles.yazi_config;
   home.file.".config/yazi/init.lua".source = dotfiles.yazi_lua;

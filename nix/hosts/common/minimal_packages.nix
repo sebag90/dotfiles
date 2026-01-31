@@ -1,5 +1,5 @@
 # minimal packages, installed in all system including generic
-{ pkgs, helix, goosebutils, ... }:
+{ pkgs, helix, goosebutils, ghostty, ... }:
 {
   # nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -41,6 +41,7 @@
     python313Packages.ipython
     lazydocker
 
+    # ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     # editors
     # helix
     helix.packages.${pkgs.stdenv.hostPlatform.system}.default

@@ -52,6 +52,7 @@
         ];
       };
     };
+
     # mac
     darwinConfigurations = {
       mac = nix-darwin.lib.darwinSystem {
@@ -95,6 +96,28 @@
         modules = [
           ./hosts/common/allowunfree.nix
           ./hosts/generic/home.nix
+        ];
+      };
+    };
+
+    # laptop
+    homeConfigurations = {
+      laptop = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux"; # Change to aarch64-linux if needed
+        };
+
+        extraSpecialArgs = {
+          dotfiles = inputs.dotfiles;
+          hostname = "laptop";
+          helix = inputs.helix;
+          goosebutils = inputs.goosebutils;
+          dotfiles_dir = ".config/dotfiles";
+        };
+
+        modules = [
+          ./hosts/common/allowunfree.nix
+          ./hosts/laptop/home.nix
         ];
       };
     };

@@ -4,11 +4,11 @@ function build
         ulimit -n 4096
     end
 
-    # generic host: run nix
+    # nix package manager
     if contains "$NIX_HOSTNAME" generic laptop
-        nix run $DOTFILES_DIR/nix#homeConfigurations.generic.activationPackage
+        nix run $DOTFILES_DIR/nix#homeConfigurations.$NIX_HOSTNAME.activationPackage
     else
-        # other hosts: run nix build with sudo
+        # nixos and nix darwin (mac)
         sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR/nix#$NIX_HOSTNAME
     end
 end

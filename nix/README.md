@@ -6,9 +6,9 @@ Add the following line to `/etc/nix/nix.conf`
 experimental-features = nix-command flakes
 ```
 
-## Generic install
+## Headless and laptop install
 * cd into `cd dotfiles/nix/`
-* run `$ nix run .#homeConfigurations.generic.activationPackage`
+* run `$ nix run .#homeConfigurations.<headless | laptop>.activationPackage`
 
 
 ## NIX secret file

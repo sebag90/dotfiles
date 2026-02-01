@@ -1,4 +1,4 @@
-# common packages installed in all systems (except for generic)
+# common packages installed in all systems (except for headless)
 { pkgs, ... }:
 {
   # nixpkgs.config.allowUnfree = true;

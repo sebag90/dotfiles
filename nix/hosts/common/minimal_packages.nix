@@ -1,4 +1,4 @@
-# minimal packages, installed in all system including generic
+# minimal packages, installed in all system including headless
 { pkgs, helix, goosebutils, ghostty, ... }:
 {
   # nixpkgs.config.allowUnfree = true;

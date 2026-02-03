@@ -100,6 +100,27 @@
       };
     };
 
+    homeConfigurations = {
+      container = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux"; # Change to aarch64-linux if needed
+        };
+
+        extraSpecialArgs = {
+          dotfiles = inputs.dotfiles;
+          hostname = "headless";
+          helix = inputs.helix;
+          goosebutils = inputs.goosebutils;
+          dotfiles_dir = ".config/dotfiles";
+        };
+
+        modules = [
+          ./hosts/common/allowunfree.nix
+          ./hosts/container/home.nix
+        ];
+      };
+    };
+
     # laptop
     homeConfigurations = {
       laptop = home-manager.lib.homeManagerConfiguration {

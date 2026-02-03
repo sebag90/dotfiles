@@ -2,7 +2,7 @@
   imports = [
     ./eza.nix
     ./shell.nix
-    ./git.nix
+    # ./git.nix
     ./yazi.nix
   ];
 }

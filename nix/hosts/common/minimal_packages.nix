@@ -11,7 +11,7 @@
     # utils
     wget
     curl
-    # git
+    git
     bat
     eza
     unzip

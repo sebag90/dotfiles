@@ -101,24 +101,31 @@
     };
 
     homeConfigurations = {
-      container = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux"; # Change to aarch64-linux if needed
-        };
+      container =
+        let
+          system = builtins.currentSystem;
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit system;
 
-        extraSpecialArgs = {
-          dotfiles = inputs.dotfiles;
-          hostname = "headless";
-          helix = inputs.helix;
-          goosebutils = inputs.goosebutils;
-          dotfiles_dir = ".config/dotfiles";
-        };
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
 
-        modules = [
-          ./hosts/common/allowunfree.nix
-          ./hosts/container/home.nix
-        ];
-      };
+          extraSpecialArgs = {
+            dotfiles = inputs.dotfiles;
+            hostname = "headless";
+            helix = inputs.helix;
+            goosebutils = inputs.goosebutils;
+            dotfiles_dir = ".config/dotfiles";
+          };
+
+          modules = [
+            ./hosts/common/allowunfree.nix
+            ./hosts/container/home.nix
+          ];
+        };
     };
 
     # laptop

@@ -7,7 +7,7 @@ config.window_close_confirmation = 'NeverPrompt'
 
 -- Font
 config.font = wezterm.font_with_fallback {
-  'Cascadia Code',
+  'CaskaydiaCove Nerd Font',
   'Symbols Nerd Font',
 }
 config.font_size = 14.0
@@ -20,6 +20,8 @@ config.color_scheme = 'rose-pine'
 -- Window appearance
 config.window_background_opacity = 0.96
 config.macos_window_background_blur = 20
+-- config.window_decorations = "RESIZE"
+
 -- config.window_padding = {
 --   left = 5,
 --   right = 5,
@@ -28,7 +30,8 @@ config.macos_window_background_blur = 20
 -- }
 
 -- Tab Bar Styling (Sleek & Integrated)
-config.use_fancy_tab_bar = true
+-- config.use_fancy_tab_bar = true
+-- config.enable_tab_bar = false
 -- config.window_frame = {
 --   font = wezterm.font({ family = 'Cascadia Code', weight = 'Bold' }),
 --   font_size = 14.0,

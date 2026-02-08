@@ -1,13 +1,28 @@
-FROM nixos/nix as builder
+FROM nixos/nix AS builder
+
+RUN mkdir -p /etc/nix
+COPY <<EOF /etc/nix/nix.conf
+sandbox = false
+filter-syscalls = false
+experimental-features = nix-command flakes
+EOF
+
 WORKDIR /build-dir
+COPY . .
+WORKDIR /build-dir/nix
 
-RUN git clone https://github.com/sebag90/dotfiles.git
-WORKDIR /build-dir/dotfiles/nix
+COPY <<'EOF' /build-dir/nix/build_container.sh
+ARCH=$(uname -m)
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+SYSTEM="${ARCH}-${OS}"
 
-RUN nix build \
-    --extra-experimental-features flakes \
-    --extra-experimental-features nix-command \
-    .#homeConfigurations.container.activationPackage
+nix build \
+  --option sandbox false \
+  --option filter-syscalls false \
+  .#homeConfigurations.${SYSTEM}.container.activationPackage
+EOF
+
+RUN bash build_container.sh
 
 # remove conflicting packages
 RUN nix-env -e git-minimal
@@ -54,4 +69,5 @@ ENV HOME=/root \
     PATH=/root/.nix-profile/bin:/bin:/usr/bin
 
 WORKDIR /workspace
-CMD ["fish"]
+ENTRYPOINT ["fish"]
+

@@ -11,6 +11,8 @@ WORKDIR /build-dir
 COPY . .
 WORKDIR /build-dir/nix
 
+
+# TODO: add --system aarch64-linux  programmatically if arch
 COPY <<'EOF' /build-dir/nix/build_container.sh
 ARCH=$(uname -m)
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')

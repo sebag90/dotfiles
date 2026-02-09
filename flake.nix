@@ -1,7 +1,7 @@
 {
   outputs = { self }: {
     # zsh
-      zsh_theme = builtins.path {
+    zsh_theme = builtins.path {
       name = "mytheme.zsh-theme";
       path = ./zsh/mytheme.zsh-theme;
     };

@@ -12,6 +12,7 @@
     meld
     nodejs
     go
+    wezterm
 
     # editors
     vscodium

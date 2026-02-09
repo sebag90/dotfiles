@@ -20,32 +20,25 @@
     ghostty.url = "github:ghostty-org/ghostty";
     helix.url = "github:helix-editor/helix";
     goosebutils.url = "github:sebag90/goosebutils";
-  
+
     solaar = {
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    flake-utils,
-    solaar,
-    ...
-  }:
-  flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    inputs@{ nixpkgs, home-manager, nix-darwin, flake-utils, solaar, ... }:
     let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      mkPkgs = system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
-      mkHome = { hostname, homeFile }:
+      mkHome = { system, hostname, homeFile }:
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
+          pkgs = mkPkgs system;
           extraSpecialArgs = {
             dotfiles = inputs.dotfiles;
             helix = inputs.helix;
@@ -53,33 +46,35 @@
             dotfiles_dir = ".config/dotfiles";
             inherit hostname;
           };
-
-          modules = [
-            ./hosts/common/allowunfree.nix
-            homeFile
-          ];
+          modules = [ ./hosts/common/allowunfree.nix homeFile ];
         };
-    in
-    {
-      # Home Manager
+    in flake-utils.lib.eachDefaultSystem (system: {
+      ## ─────────────────────────────────────────────
+      ## Home Manager (THIS is what containers build)
+      ## ─────────────────────────────────────────────
       homeConfigurations = {
         container = mkHome {
+          inherit system;
           hostname = "container";
           homeFile = ./hosts/container/home.nix;
         };
 
         headless = mkHome {
+          inherit system;
           hostname = "headless";
           homeFile = ./hosts/headless/home.nix;
         };
 
         laptop = mkHome {
+          inherit system;
           hostname = "laptop";
           homeFile = ./hosts/laptop/home.nix;
         };
       };
-
-      # NixOS 
+    }) // {
+      ## ─────────────────────────────────────────────
+      ## NixOS
+      ## ─────────────────────────────────────────────
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -94,25 +89,40 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-
-              home-manager.users.seba =
-                import ./hosts/nixos/home.nix;
+              home-manager.users.seba = import ./hosts/nixos/home.nix;
             }
           ];
         };
       };
 
-      # macOS
+      ## ─────────────────────────────────────────────
+      ## macOS (nix-darwin)
+      ## ─────────────────────────────────────────────
       darwinConfigurations = {
         mac = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
             ./hosts/mac/configuration.nix
             ./hosts/common/allowunfree.nix
+
             home-manager.darwinModules.home-manager
+
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.sebastiano = import ./hosts/mac/home.nix;
+
+              home-manager.extraSpecialArgs = {
+                dotfiles = inputs.dotfiles;
+                helix = inputs.helix;
+                goosebutils = inputs.goosebutils;
+                dotfiles_dir = ".config/dotfiles";
+                hostname = "mac";
+              };
+            }
           ];
         };
       };
-    }
-  );
+    };
+
 }

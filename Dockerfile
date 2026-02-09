@@ -68,8 +68,8 @@ COPY --from=builder /out/root/.config /root/.config
 COPY --from=builder /out/root/.nix-profile /root/.nix-profile
 
 ENV HOME=/root \
-    PATH=/root/.nix-profile/bin:/bin:/usr/bin
+    PATH=/root/.nix-profile/bin:/bin:/usr/bin \
+    LANG=C.UTF-8
 
 WORKDIR /workspace
 ENTRYPOINT ["fish"]
-

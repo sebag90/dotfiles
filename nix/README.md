@@ -7,9 +7,13 @@ experimental-features = nix-command flakes
 ```
 
 ## Headless and laptop install
-* cd into `cd dotfiles/nix/`
-* run `$ nix run .#homeConfigurations.<headless | laptop>.activationPackage`
+**ON FEDORA**: first activate daemon: `sudo systemctl enable --now nix-daemon`
 
+
+* cd into `cd dotfiles/nix/`
+* run `$ nix run .#homeConfigurations.<system>.<headless | laptop>.activationPackage`
+
+`<system>` ist the architecture (eg. x86_64-linux, check dockerfile for how to build automatically)
 
 ## NIX secret file
 inside the directory of the host, create a `secrets.nix` (`dotfiles/nix/hosts/nixos/secrets.nix`):

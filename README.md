@@ -21,3 +21,4 @@ Download [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) and
 * add fish to the shells: `command -v fish | sudo tee -a /etc/shells`
 * set zsh as default shell: `chsh -s $(which fish)`
 
+Alternative: if chsh does not work: `sudo lchsh $(whoami)`

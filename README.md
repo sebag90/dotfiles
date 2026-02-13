@@ -22,3 +22,6 @@ Download [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) and
 * set zsh as default shell: `chsh -s $(which fish)`
 
 Alternative: if chsh does not work: `sudo lchsh $(whoami)`
+
+# using stow
+run: `stow -t /var/home/seba/.config/ config` to create system links to config files

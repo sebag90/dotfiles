@@ -86,7 +86,7 @@
 
     zellij_theme = builtins.path {
       name = "zellij_theme";
-      path = ./config/zellij/rose-pine.kdl;
+      path = ./config/zellij/themes/rose-pine.kdl;
     };
 
     # fish

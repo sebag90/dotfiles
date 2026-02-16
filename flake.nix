@@ -92,7 +92,7 @@
     # fish
     fish_configs = builtins.path {
       name = "fish_configs";
-      path = ./config/fish/configs;
+      path = ./config/fish/conf.d;
     };
 
     fish_themes = builtins.path {

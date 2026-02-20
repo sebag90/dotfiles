@@ -1,3 +1,10 @@
+function in_toolbox
+    if set -q TOOLBOX_PATH
+        return 0
+    end
+    return 1
+end
+
 function box_name
     if test -f ~/.box-name
         cat ~/.box-name
@@ -51,7 +58,13 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 function fish_prompt
     set venv (virtualenv_prompt_info)
     set user (set_color cyan)$USER(set_color normal)
-    set machine (set_color green)(box_name)(set_color normal)
+
+    if in_toolbox
+        set machine (set_color brblack)(box_name)(set_color normal)
+    else
+        set machine (set_color blue)(box_name)(set_color normal)
+    end
+
     set dir (set_color yellow --bold)"["(prompt_pwd)"]"(set_color normal)
     set git (git_info)
 

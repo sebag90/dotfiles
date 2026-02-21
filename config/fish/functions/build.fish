@@ -4,11 +4,15 @@ function build
         ulimit -n 4096
     end
 
+    set ARCH (uname -m)
+    set OS (string lower (uname -s))
+    set SYSTEM "$ARCH-$OS"
+
     # nix package manager
-    if contains "$NIX_HOSTNAME" generic laptop
-        nix run $DOTFILES_DIR/nix#homeConfigurations.$NIX_HOSTNAME.activationPackage
+    if contains "$NIX_HOSTNAME" headless container laptop
+        nix run $DOTFILES_DIR#homeConfigurations.$SYSTEM.$NIX_HOSTNAME.activationPackage
     else
         # nixos and nix darwin (mac)
-        sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR/nix#$NIX_HOSTNAME
+        sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR#$NIX_HOSTNAME
     end
 end

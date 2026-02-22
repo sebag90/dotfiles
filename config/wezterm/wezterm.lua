@@ -21,10 +21,10 @@ config.colors = {
   selection_bg = '#ebbcba', -- rose-pine accent (nice and visible)
 }
 
-
 -- Window appearance
 config.window_background_opacity = 0.96
 config.macos_window_background_blur = 20
+
 
 -- Padding (Gives the text room to breathe)
 config.window_padding = {

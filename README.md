@@ -24,4 +24,4 @@ Download [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) and
 Alternative: if chsh does not work: `sudo lchsh $(whoami)`
 
 # using stow
-run: `stow -t $HOME/.config/ config` to create system links to config files
+run: `stow --no-folding -t $HOME/.config/ config` to create system links to config files

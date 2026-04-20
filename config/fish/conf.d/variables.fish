@@ -1,6 +1,7 @@
 set -x EDITOR hx
 set -x VISUAL hx
 set -x PIP_REQUIRE_VIRTUALENV true
+set -x NPM_CONFIG_PREFIX $HOME/.cache/npm/global
 
 # set docker host to podman sock if it exists
 if test -S "$XDG_RUNTIME_DIR/podman/podman.sock"

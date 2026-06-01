@@ -1,3 +1,4 @@
+fish_add_path -m /usr/bin
 # go
 fish_add_path -a $HOME/go/bin
 

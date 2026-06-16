@@ -7,7 +7,7 @@ config.window_close_confirmation = 'NeverPrompt'
 
 -- Font
 config.font = wezterm.font_with_fallback {
-  'CaskaydiaCove Nerd Font',
+  'JuliaMono',
   'Symbols Nerd Font',
 }
 config.font_size = 15.0

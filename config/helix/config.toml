@@ -20,9 +20,6 @@ select = "underline"
 [editor.inline-diagnostics]
 cursor-line = "warning"
 
-# [editor.file-picker]
-# hidden = false
-
 [editor.soft-wrap]
 enable = true
 # wrap-indicator = "↪ "
@@ -34,6 +31,8 @@ render = true
 left = ["mode", "spacer", "file-name", "file-modification-indicator"]
 center = ["version-control"]
 right = ["diagnostics", "position", "separator", "total-line-numbers", "spacer", "file-encoding"]
+
+# [editor.completion]
 
 # Shortcurts
 # move block up/down

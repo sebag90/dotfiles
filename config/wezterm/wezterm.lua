@@ -37,6 +37,7 @@ config.window_padding = {
 -- Cursor
 config.default_cursor_style = 'BlinkingBlock'
 config.cursor_blink_rate = 600
+config.hide_mouse_cursor_when_typing = false
 
 -- Tab bar (kept subtle)
 config.enable_tab_bar = true
@@ -45,5 +46,15 @@ config.use_fancy_tab_bar = true
 
 -- Slightly softer rendering
 config.bold_brightens_ansi_colors = false
+
+-- Keybindings
+config.keys = {}
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'ALT',
+    action = wezterm.action.ActivateTab(i - 1),
+  })
+end
 
 return config

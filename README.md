@@ -23,5 +23,8 @@ Download [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) and
 
 Alternative: if chsh does not work: `sudo lchsh $(whoami)`
 
+## gnome 3rd mouse click
+`gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true`
+
 # using stow
 run: `stow --no-folding -t $HOME/.config/ config` to create system links to config files

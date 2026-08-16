@@ -1,17 +1,4 @@
 function devc
-    if command -q toolbox
-        set -x SHELL /nix/profile/bin/fish
-        toolbox enter devbox
-        return
-    end
-
-    for candidate in podman docker
-        if command -q $candidate
-            $candidate run -it -v (pwd):/workspace:Z ghcr.io/sebag90/devenv:latest
-            return
-        end
-    end
-
-    echo "Toolbox, podman or docker is not available"
-    return 1
+    podman run -it --rm --userns=keep-id --user $(id -u):$(id -g) -v $(pwd):/workspace:Z -w /workspace -v $XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock -e CONTAINER_HOST=unix:///run/podman/podman.sock --security-opt label=disable ghcr.io/sebag90/devenv:latest
+    return
 end

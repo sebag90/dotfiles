@@ -362,7 +362,7 @@ theme "rose-pine"
 // Examples:
 //
 // copy_command "xclip -selection clipboard" // x11
-// copy_command "wl-copy"                    // wayland
+copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 //
 // copy_command "pbcopy"

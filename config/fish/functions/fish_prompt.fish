@@ -1,5 +1,5 @@
 function in_toolbox
-    if set -q TOOLBOX_PATH
+    if set -q TOOLBOX_PATH; or set -q DEVENV
         return 0
     end
     return 1

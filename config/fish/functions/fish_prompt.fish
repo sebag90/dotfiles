@@ -22,7 +22,9 @@ function prompt_char
 end
 
 function virtualenv_prompt_info
-    if set -q VIRTUAL_ENV
+    # only show it when the venv is actually activated (its bin is on PATH),
+    # not when VIRTUAL_ENV is merely set as an install target for uv
+    if set -q VIRTUAL_ENV; and contains $VIRTUAL_ENV/bin $PATH
         set name (basename $VIRTUAL_ENV)
         echo -n (set_color red)"($name)"(set_color normal)" "
     end

@@ -1,4 +1,8 @@
 function devc
+    if set -q DEVENV
+        echo "devc: already inside devenv" >&2
+        return 1
+    end
     set -l image $argv[1]
     test -z "$image" && set image ghcr.io/sebag90/devenv:latest
     set -l mounts

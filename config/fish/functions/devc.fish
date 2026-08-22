@@ -12,8 +12,8 @@ function devc
     podman run -it --rm \
         --userns=keep-id --user $(id -u):$(id -g) \
         --passwd-entry 'dev:*:$UID:$GID::/home/dev:/nix/profile/bin/fish' \
-        -w /workspace/$(basename $(pwd)) \
-        -v $(pwd):/workspace/$(basename $(pwd)):Z \
+        -w $(pwd) \
+        -v $(pwd):$(pwd):Z \
         -v $XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock \
         -e CONTAINER_HOST=unix:///run/podman/podman.sock \
         --network host \

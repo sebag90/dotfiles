@@ -9,6 +9,7 @@ function devc
     for d in .pi/agent .aws .gitconfig .ssh .netrc
         test -e ~/$d && set -a mounts -v ~/$d:/home/dev/$d:Z
     end
+    test -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" && set -a mounts -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/wayland-0 -e WAYLAND_DISPLAY=/tmp/wayland-0
     podman run -it --rm \
         --userns=keep-id --user $(id -u):$(id -g) \
         --passwd-entry 'dev:*:$UID:$GID::/home/dev:/nix/profile/bin/fish' \

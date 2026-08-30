@@ -3,22 +3,41 @@ function devc
         echo "devc: already inside devenv" >&2
         return 1
     end
-    set -l image $argv[1]
-    test -z "$image" && set image ghcr.io/sebag90/devenv:latest
-    set -l mounts
-    for d in .pi/agent .aws .gitconfig .ssh .netrc
-        test -e ~/$d && set -a mounts -v ~/$d:/home/dev/$d:Z
+
+    set -l command $argv[1]
+
+    # No arguments, or first argument is an image name:
+    # run an ephemeral interactive container.
+    if test -z "$command" || string match -q '*/*' -- "$command" || string match -q '*:*' -- "$command"
+        _devc_run $argv
+        return $status
     end
-    test -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" && set -a mounts -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/wayland-0 -e WAYLAND_DISPLAY=/tmp/wayland-0
-    podman run -it --rm \
-        --userns=keep-id --user $(id -u):$(id -g) \
-        --passwd-entry 'dev:*:$UID:$GID::/home/dev:/nix/profile/bin/fish' \
-        -w $(pwd) \
-        -v $(pwd):$(pwd):Z \
-        -v $XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock \
-        -e CONTAINER_HOST=unix:///run/podman/podman.sock \
-        --network host \
-        $mounts \
-        --security-opt label=disable \
-        $image
+
+    switch $command
+        case up
+            _devc_up $argv[2..-1]
+        case ssh
+            _devc_ssh
+        case down
+            _devc_down
+        case restart
+            _devc_restart
+        case status
+            _devc_status
+        case logs
+            _devc_logs
+        case rm
+            _devc_rm
+        case '*'
+            echo "Usage:"
+            echo "  devc [IMAGE]          Run an ephemeral container"
+            echo "  devc up [IMAGE]       Start a persistent container"
+            echo "  devc ssh              Enter the persistent container"
+            echo "  devc down             Stop the persistent container"
+            echo "  devc restart          Restart the persistent container"
+            echo "  devc status           Show persistent container status"
+            echo "  devc logs             Show persistent container logs"
+            echo "  devc rm                Remove the persistent container"
+            return 1
+    end
 end

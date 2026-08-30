@@ -1,0 +1,356 @@
+function _devc_common_args
+    set -l dir (pwd)
+
+    echo \
+        --userns=keep-id \
+        --user (id -u):(id -g) \
+        --passwd-entry "dev:*:"(id -u)":"(id -g)"::/home/dev:/nix/profile/bin/fish" \
+        -w $dir \
+        -v "$dir:$dir:Z" \
+        -v "$XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock" \
+        -e CONTAINER_HOST=unix:///run/podman/podman.sock \
+        --network host \
+        --security-opt label=disable
+end
+function _devc_down
+    set -l name (_devc_name)
+    set -l dir (pwd)
+
+    if not podman container exists $name
+        echo "devc: no persistent container for $dir" >&2
+        return 1
+    end
+
+    set -l running (podman inspect -f '{{.State.Running}}' $name 2>/dev/null)
+
+    if test "$running" != true
+        echo "devc: container already stopped"
+        return 0
+    end
+
+    echo "devc: stopping $name"
+    podman stop $name
+end
+function _devc_image
+    set -l image $argv[1]
+    test -z "$image" && set image ghcr.io/sebag90/devenv:latest
+    echo $image
+end
+function _devc_logs
+    set -l name (_devc_name)
+
+    if not podman container exists $name
+        echo "devc: no persistent container" >&2
+        return 1
+    end
+
+    podman logs -f $name
+end
+function _devc_mounts
+    set -l mounts
+
+    for d in .pi/agent .aws .gitconfig .ssh .netrc
+        test -e ~/$d && set -a mounts -v ~/$d:/home/dev/$d:Z
+    end
+
+    if test -n "$XDG_RUNTIME_DIR"
+        and test -n "$WAYLAND_DISPLAY"
+        and test -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
+
+        set -a mounts \
+            -v "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/wayland-0" \
+            -e WAYLAND_DISPLAY=/tmp/wayland-0
+    end
+
+    echo $mounts
+end
+function _devc_name
+    # The absolute working directory is the identity of a persistent devc.
+    #
+    # We hash it rather than putting the directory directly into the
+    # container name, since paths can contain characters that are awkward
+    # in container names.
+    set -l dir (pwd)
+    set -l hash (printf '%s' "$dir" | sha256sum | cut -c1-12)
+
+    echo "devc-$hash"
+end
+function _devc_restart
+    set -l name (_devc_name)
+    set -l dir (pwd)
+
+    if not podman container exists $name
+        echo "devc: no persistent container for $dir" >&2
+        echo "devc: run 'devc up' first" >&2
+        return 1
+    end
+
+    echo "devc: restarting $name"
+    podman restart $name
+end
+function _devc_rm
+    set -l name (_devc_name)
+    set -l dir (pwd)
+
+    if not podman container exists $name
+        echo "devc: no persistent container for $dir" >&2
+        return 1
+    end
+
+    echo "devc: removing $name"
+    podman rm -f $name
+end
+function _devc_run
+    set -l image (_devc_image $argv[1])
+    set -l mounts (_devc_mounts)
+    set -l common (_devc_common_args)
+
+    podman run -it --rm \
+        $common \
+        $mounts \
+        $image
+end
+function _devc_ssh
+    set -l name (_devc_name)
+    set -l dir (pwd)
+
+    if not podman container exists $name
+        echo "devc: no persistent container for $dir" >&2
+        echo "devc: run 'devc up' first" >&2
+        return 1
+    end
+
+    set -l running (podman inspect -f '{{.State.Running}}' $name 2>/dev/null)
+
+    if test "$running" != true
+        echo "devc: container is stopped" >&2
+        echo "devc: run 'devc up' first" >&2
+        return 1
+    end
+
+    podman exec -it $name fish
+end
+function _devc_status
+    set -l name (_devc_name)
+    set -l dir (pwd)
+
+    if not podman container exists $name
+        echo "devc: no persistent container"
+        echo "devc: $dir"
+        return 0
+    end
+
+    podman inspect \
+        --format 'name={{.Name}}
+status={{.State.Status}}
+image={{.Config.Image}}
+directory={{index .Config.Labels "devc.dir"}}' \
+        $name
+end
+function _devc_up
+    set -l image (_devc_image $argv[1])
+    set -l name (_devc_name)
+    set -l dir (pwd)
+    set -l mounts (_devc_mounts)
+    set -l common (_devc_common_args)
+
+    # Does a container already exist for this directory?
+    if podman container exists $name
+        set -l running (podman inspect -f '{{.State.Running}}' $name 2>/dev/null)
+
+        if test "$running" = true
+            echo "devc: container already running"
+            echo "devc: $name"
+            echo "devc: $dir"
+            return 1
+        end
+
+        echo "devc: restarting existing container $name"
+        podman start $name
+        return $status
+    end
+
+    echo "devc: starting $name"
+    echo "devc: $dir"
+
+    podman run -d \
+        --name $name \
+        --label "devc.dir=$dir" \
+        --label "devc.image=$image" \
+        $common \
+        $mounts \
+        $image
+
+    if test $status -eq 0
+        echo
+        echo "devc: container started"
+        echo "devc: use 'devc ssh' to enter it"
+    end
+end
+function build
+    # macOS: increase open file limit
+    if test "$NIX_HOSTNAME" = mac
+        ulimit -n 4096
+    end
+
+    set ARCH (uname -m)
+    set OS (string lower (uname -s))
+    set SYSTEM "$ARCH-$OS"
+
+    # nix package manager
+    if contains "$NIX_HOSTNAME" headless container laptop
+        nix run $DOTFILES_DIR#homeConfigurations.$SYSTEM.$NIX_HOSTNAME.activationPackage
+    else
+        # nixos and nix darwin (mac)
+        sudo $NIX_BUILD_EXEC switch --impure --flake $DOTFILES_DIR#$NIX_HOSTNAME
+    end
+end
+function cd
+    # Call the built-in cd command with all arguments
+    builtin cd $argv
+
+    # Check if .venv directory exists
+    if test -d .venv
+        # Print a colored message
+        echo -n ".venv found, activate with: "
+        set_color green
+        echo "source .venv/bin/activate.fish"
+        set_color normal
+    end
+end
+function clean
+    nix-collect-garbage -d
+end
+function copy --description "Copy stdin to clipboard"
+    if test "$hostname" = mac
+        pbcopy
+    else
+        wl-copy
+    end
+end
+function devc
+    if set -q DEVENV
+        echo "devc: already inside devenv" >&2
+        return 1
+    end
+
+    set -l command $argv[1]
+
+    # No arguments, or first argument is an image name:
+    # run an ephemeral interactive container.
+    if test -z "$command" || string match -q '*/*' -- "$command" || string match -q '*:*' -- "$command"
+        _devc_run $argv
+        return $status
+    end
+
+    switch $command
+        case up
+            _devc_up $argv[2..-1]
+        case ssh
+            _devc_ssh
+        case down
+            _devc_down
+        case restart
+            _devc_restart
+        case status
+            _devc_status
+        case logs
+            _devc_logs
+        case rm
+            _devc_rm
+        case '*'
+            echo "Usage:"
+            echo "  devc [IMAGE]          Run an ephemeral container"
+            echo "  devc up [IMAGE]       Start a persistent container"
+            echo "  devc ssh              Enter the persistent container"
+            echo "  devc down             Stop the persistent container"
+            echo "  devc restart          Restart the persistent container"
+            echo "  devc status           Show persistent container status"
+            echo "  devc logs             Show persistent container logs"
+            echo "  devc rm                Remove the persistent container"
+            return 1
+    end
+end
+function in_toolbox
+    if set -q TOOLBOX_PATH; or set -q DEVENV
+        return 0
+    end
+    return 1
+end
+
+function box_name
+    if test -f ~/.box-name
+        cat ~/.box-name
+    else
+        echo $hostname
+    end
+end
+
+function prompt_char
+    if test (id -u) -eq 0
+        echo "#"
+    else
+        echo "\$"
+    end
+end
+
+function virtualenv_prompt_info
+    # only show it when the venv is actually activated (its bin is on PATH),
+    # not when VIRTUAL_ENV is merely set as an install target for uv
+    if set -q VIRTUAL_ENV; and contains $VIRTUAL_ENV/bin $PATH
+        set name (basename $VIRTUAL_ENV)
+        echo -n (set_color red)"($name)"(set_color normal)" "
+    end
+end
+
+function git_info
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+    or return
+
+    set branch (command git symbolic-ref --short HEAD 2>/dev/null)
+    if test -z "$branch"
+        set branch (command git rev-parse --short HEAD 2>/dev/null)
+    end
+
+    command git diff --quiet --ignore-submodules --cached
+    set staged_dirty $status
+
+    command git diff --quiet --ignore-submodules
+    set unstaged_dirty $status
+
+    set set_dirty ""
+    if test $staged_dirty -ne 0 -o $unstaged_dirty -ne 0
+        set set_dirty (set_color red)" ✗"(set_color normal)
+    else
+        set set_dirty (set_color green)" ✔︎"(set_color normal)
+    end
+
+    echo -n " "(set_color magenta)" $branch$set_dirty"(set_color normal)
+end
+
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
+function fish_prompt
+    set venv (virtualenv_prompt_info)
+    set user (set_color cyan)$USER(set_color normal)
+
+    if in_toolbox
+        set machine (set_color brblack)(box_name)(set_color normal)
+    else
+        set machine (set_color blue)(box_name)(set_color normal)
+    end
+
+    set dir (set_color yellow --bold)"["(prompt_pwd)"]"(set_color normal)
+    set git (git_info)
+
+    echo -n "$venv$user"(set_color white)"@"(set_color normal)"$machine $dir$git"
+    echo -n (set_color magenta --bold) (prompt_char)(set_color normal)" "
+end
+function uvr
+    # Check if .env file exists
+    if test -f .env
+        uv run --env-file .env $argv
+    else
+        uv run $argv
+    end
+end

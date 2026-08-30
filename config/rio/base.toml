@@ -1,6 +1,0 @@
-confirm-before-quit = false
-theme = "rose-pine.toml"
-
-[cursor]
-shape = 'beam'
-blinking = true

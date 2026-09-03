@@ -11,6 +11,7 @@ function _devc_common_args
         -v "$dir:$dir:Z" \
         -v "$XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock" \
         -e CONTAINER_HOST=unix:///run/podman/podman.sock \
+        -e COLORTERM=$COLORTERM \
         --network host \
         --security-opt label=disable
 end

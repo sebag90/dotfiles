@@ -20,3 +20,9 @@ args = ["server"]
 inlayHints.callArgumentNames = false
 experimental.rename = true
 experimental.autoImport = true
+
+[[language]]
+name = "html"
+language-servers = []
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.html"] }      
+auto-format = true

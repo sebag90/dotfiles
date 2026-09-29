@@ -5,8 +5,8 @@ function _devc_common_args
 
     printf '%s\n' \
         --userns=keep-id \
-        --user "$uid:$gid" \
-        --passwd-entry "dev:*:$uid:$gid::/home/dev:/nix/profile/bin/fish" \
+        # --user "$uid:$gid" \
+        # --passwd-entry "dev:*:$uid:$gid::/home/dev:/nix/profile/bin/fish" \
         -w "$dir" \
         -v "$dir:$dir:Z" \
         -v "$XDG_RUNTIME_DIR/podman/podman.sock:/run/podman/podman.sock" \

@@ -1,6 +1,6 @@
 [[language]]
 name = "python"
-language-servers = [ "pyrefly" ]
+language-servers = [ "pyrefly", "ruff" ]
 formatter = { command = "ruff", args = ["format", "--stdin-filename", "file.py", "-"] }
 auto-format = true
 

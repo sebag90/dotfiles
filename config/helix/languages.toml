@@ -15,7 +15,6 @@ typeCheckingMode = "default"
 command = "ruff"
 args = ["server"]
 
-
 [[language]]
 name = "html"
 formatter = { command = 'prettier', args = ["--parser", "html"] }
@@ -25,6 +24,20 @@ auto-format = true
 name = "json"
 formatter = { command = 'prettier', args = ["--parser", "json"] }
 auto-format = true
+
+[[language]]
+name = "css"
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "html"
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "json"
+formatter = { command = 'prettier', args = ["--parser", "json"] }
 
 [[language]]
 name = "css"

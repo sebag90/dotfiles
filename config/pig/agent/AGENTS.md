@@ -16,6 +16,8 @@ These are some tools I often use while developing and will most likely ask you t
 Always include a very minimalistic Justfile to execute commands (such as just db, just frontend, just backend and so on).  
 If `just` is run without arguments, it should default to `just --list`.
 Do not overdue with the just commands, only the ones that are truly needed or requested.
+Justfiles should always include a `just up` and `just down` commands to start and stop the project locally.
+
 
 ## Podman
 

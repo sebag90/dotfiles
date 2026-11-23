@@ -7,6 +7,11 @@ Unless explicitly asked to, do not modify any file just yet. Any request that do
 To ensure isolation, you are running inside a podman container, but the network is mapped to host, so you can serve any web server on 0.0.0.0 and I'll be able to see it on the assigned port.
 Moreover, docker is mapped to the podman executable which is connected to the host's socket, so you have access to rootless podman on the developer's machine.
 
+# Interactive decision pages (web pickers)
+
+Some skills (`impeccable serve-question`, live-mode pickers, and similar) answer a
+question by serving a local page instead of asking in chat. For these you can install chromium headless with sudo (we are inside a container) and host the page on 0.0.0.0:PORT, the network is shared with the host, so I'll be able to check it.
+
 # Developer's tools
 
 These are some tools I often use while developing and will most likely ask you to include:
